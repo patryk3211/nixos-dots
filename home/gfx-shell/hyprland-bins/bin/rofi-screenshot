@@ -1,0 +1,79 @@
+#!/usr/bin/env bash
+rofi_cmd="rofi -theme $HOME/.config/rofi/screenshot.rasi"
+
+screendir="$(xdg-user-dir PICTURES)/Screenshots"
+filename="Screenshot_$(date +%Y%m%d_%H%M%S).png"
+
+screen="󰍹 Capture Desktop"
+area="󰆞 Capture Area"
+window="󰖲 Capture Window"
+inthree="󰔝 Take in 3s"
+inten="󰔜 Take in 10s"
+
+view() {
+  image-roll $screendir/$filename
+  if [[ -e "$screendir/$filename" ]]; then
+    dunstify -u low "Screenshot saved."
+  else
+    dunstify -u low "Screenshot deleted."
+  fi
+}
+
+delay() {
+  for i in $(seq $1 -1 1); do
+    dunstify -u low -r 8512 "Screenshot in $i"
+    sleep 1
+  done
+  dunstify -C 8512
+}
+
+clipboard() {
+  wl-copy -p -t image/png && dunstify -u low "Copied to clipboard."
+}
+
+shot_screen() {
+  sleep 0.5
+  grim -t png - | tee "$screendir/$filename" | clipboard
+  view
+}
+
+shot_area() {
+  sleep 0.5
+  area=$(slurp)
+  grim -t png -g "$area" - | tee "$screendir/$filename" | clipboard
+  view
+}
+
+shot_window() {
+  sleep 0.5
+  area=$(hyprctl activewindow -j | jaq '.at[0], ",", .at[1], " ", .size[0], "x", .size[1], "\n"' -rj)
+  grim -t png -g "$area" - | tee "$screendir/$filename" | clipboard
+  view
+}
+
+if [[ ! -d "$screendir" ]]; then
+  mkdir -p "$screendir"
+fi
+
+options="$screen\n$area\n$window\n$inthree\n$inten"
+opt="$(echo -e $options | $rofi_cmd -p 'Take A Shot' -dmenu -selected-row 0)"
+case $opt in
+  $screen)
+    shot_screen
+    ;;
+  $area)
+    shot_area
+    ;;
+  $window)
+    shot_window
+    ;;
+  $inthree)
+    delay 3
+    shot_screen
+    ;;
+  $inten)
+    delay 10
+    shot_screen
+    ;;
+esac
+

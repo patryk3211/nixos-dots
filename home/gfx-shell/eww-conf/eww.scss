@@ -1,0 +1,12 @@
+@import 'css/colors';
+
+* {
+    all: unset;
+
+    font-family: "Exo 2", sans-serif;
+    color: $text;
+}
+
+@import 'css/mainbar';
+@import 'css/calendar';
+

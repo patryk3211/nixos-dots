@@ -1,0 +1,62 @@
+.calendar_big {
+    background-color: rgba($crust, 0.75);
+
+    margin-top: 10px;
+    padding: 10px 14px;
+    border-radius: 6px;
+    border: $overlay0 solid 1px;
+}
+
+.calendar_big .text_cont {
+    margin-bottom: 4px;
+}
+
+.calendar_big .time {
+    font-size: 24px;
+    font-weight: 800;
+    margin-right: 6px;
+    color: $text;
+}
+
+.calendar_big .date {
+    font-size: 16px;
+    font-weight: 600;
+    color: $subtext0;
+}
+
+.calendar-cont {
+    padding: 4px 8px;
+    border-radius: 8px;
+    background-color: $base;
+}
+
+.calendar_big calendar {
+    :selected {
+        font-weight: 600;
+        color: $rosewater;
+    }
+
+    .button {
+        color: $text;
+    }
+    
+    .header {
+        color: $mauve;
+    }
+
+    .highlight {
+        color: $lavender;
+    }
+    
+    :indeterminate {
+        color: rgba($text, 0.4);
+    }
+}
+
+.calendar_small {
+    margin-top: 2px;
+    background-color: rgba($base, 0.75);
+    padding: 2px 4px;
+    border-radius: 4px;
+}
+

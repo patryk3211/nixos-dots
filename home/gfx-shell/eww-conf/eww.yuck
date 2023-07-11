@@ -1,0 +1,6 @@
+(include "variables.yuck")
+
+; Include widgets
+(include "yuck/mainbar.yuck")
+(include "yuck/calendar.yuck")
+

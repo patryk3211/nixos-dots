@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+for opt in $@; do
+    case $opt in
+        show)
+            eww update calendar_open=true
+            eww open calendar
+            ;;
+        hide)
+            eww close calendar
+            eww update calendar_open=false
+            ;;
+        extend)
+            eww update calendar_expanded=true
+            ;;
+        retract)
+            eww update calendar_expanded=false
+            ;;
+    esac
+done
+

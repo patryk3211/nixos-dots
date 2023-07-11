@@ -1,0 +1,38 @@
+(defwidget calendar_big []
+  (box :orientation "v"
+       :class "calendar_big"
+       :space-evenly false
+    (box :orientation "h"
+         :valign "start"
+         :space-evenly false
+	 :class "text_cont"
+      (label :text {formattime(EWW_TIME, "%H:%M")}
+             :class "time"
+             :valign "start")
+      (label :text {formattime(EWW_TIME, "%d.%m.%Y")}
+             :class "date"
+             :valign "end")
+    )
+    (box :class "calendar-cont"
+      (calendar)
+    )
+  )
+)
+
+(defwidget calendar_small []
+  (box :orientation "v"
+       :class "calendar_small"
+    {formattime(EWW_TIME, "%d %B %Y, %A")}
+  )
+)
+
+(defwindow calendar
+    :monitor 0
+    :stacking "fg"
+    :geometry (geometry :x "10px"
+                        :y "0px"
+                        :width "0%"
+                        :height "0%"
+                        :anchor "top right")
+  (literal :content {calendar_expanded ? "(calendar_big)" : "(calendar_small)"})
+)

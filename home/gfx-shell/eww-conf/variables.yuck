@@ -1,0 +1,5 @@
+(defvar calendar_open false)
+(defvar calendar_expanded false)
+
+(deflisten hyprland :initial "{\"workspaces\":[]}" "scripts/hyprland")
+

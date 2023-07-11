@@ -9,6 +9,7 @@
     mate.atril
     kalker
     gnome.file-roller
+    krita
   ];
 
   imports = [
@@ -18,6 +19,7 @@
     ./nnn.nix
     ./git.nix
     ./ssh-agent.nix
+    ./keepass.nix
 #    ./nvim
   ];
 }

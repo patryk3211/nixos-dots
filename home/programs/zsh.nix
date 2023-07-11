@@ -9,6 +9,7 @@
       nixos-update = "sudo nixos-rebuild switch";
       hm-update = "home-manager switch";
       ll = "ls -lah";
+      icat = "kitty +kitten icat";
     };
 
     plugins = [

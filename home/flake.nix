@@ -12,8 +12,10 @@
     };
   };
 
-  outputs = { nixpkgs, home-manager, hyprland, ... }: {
-    homeConfigurations."patryk@Laptop-NixOS" = home-manager.lib.homeManagerConfiguration {
+  outputs = { nixpkgs, home-manager, hyprland, ... }: let
+    userMod = import ./user.nix { };
+  in {
+    homeConfigurations."${userMod.home.username}" = home-manager.lib.homeManagerConfiguration {
       pkgs = nixpkgs.legacyPackages.x86_64-linux;
 
       modules = [

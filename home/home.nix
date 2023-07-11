@@ -1,13 +1,6 @@
-{ config, pkgs, ... }:
-let
-#  flake-compat = builtins.fetchTarball "https://github.com/edolstra/flake-compat/archive/master.tar.gz";
-#  hyprland = (import flake-compat {
-#    src = builtins.fetchTarball "https://github.com/hyprwm/Hyprland/archive/master.tar.gz";
-#  }).defaultNix;
-in {
-  home.username = "patryk";
-  home.homeDirectory = "/home/patryk";
+{ config, pkgs, lib, ... }:
 
+{
   nix = {
     package = pkgs.nixFlakes;
     extraOptions = ''
@@ -59,16 +52,6 @@ in {
     # '';
   };
 
-  # You can also manage environment variables but you will have to manually
-  # source
-  #
-  #  ~/.nix-profile/etc/profile.d/hm-session-vars.sh
-  #
-  # or
-  #
-  #  /etc/profiles/per-user/patryk/etc/profile.d/hm-session-vars.sh
-  #
-  # if you don't want to manage your shell through Home Manager.
   home.sessionVariables = {
     EDITOR = "nvim";
   };
@@ -76,6 +59,7 @@ in {
   programs.home-manager.enable = true;
 
   imports = [
+    ./user.nix
     ./modules
     ./colors.nix
     ./gfx-shell

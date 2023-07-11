@@ -15,6 +15,7 @@
   xdg.configFile."hypr/hyprpaper.conf".text = ''
     preload = ~/.config/hypr/wallpaper.jpg
     wallpaper = eDP-1,~/.config/hypr/wallpaper.jpg
+    wallpaper = HDMI-A-1,~/.config/hypr/wallpaper.jpg
   '';
 
   xdg.configFile."hypr/wallpaper.jpg".source = ./wallpaper.jpg;
@@ -30,6 +31,7 @@
 
       # Monitors
       monitor = eDP-1, 1920x1080@60, 0x0, 1
+      monitor = HDMI-A-1, 1920x1080@60, 0x0, 1
 
       # Configure environment
       env = _JAVA_AWT_WM_NONREPARENTING,1
@@ -51,6 +53,8 @@
 
       exec-once = eww open mainbar
       exec-once = hyprctl setcursor $XCURSOR_THEME $XCURSOR_SIZE
+
+      exec-once = keepassxc
 
       input {
         kb_layout = pl
@@ -146,6 +150,8 @@
 
       # Window rules
       windowrule = idleinhibit none, (.*)
+
+      windowrule = workspace 9, org\.keepassxc\.KeePassXC
     '';
   };
 

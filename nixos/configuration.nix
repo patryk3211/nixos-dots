@@ -7,6 +7,7 @@
 {
   imports = [
     ./hardware-configuration.nix
+    ./hostname.nix
     ./user.nix
   ];
 
@@ -17,20 +18,14 @@
     '';
   };
 
-  boot.loader = {
-    systemd-boot.enable = lib.mkForce false;
-    efi.canTouchEfiVariables = true;
-  };
-
-  boot = {
+  /*boot = {
     bootspec.enable = true;
     lanzaboote = {
       enable = true;
       pkiBundle = "/etc/secureboot";
     };
-  };
+  };*/
 
-  networking.hostName = "Laptop-NixOS";
   networking.networkmanager.enable = true;
 
   time.timeZone = "Europe/Warsaw";

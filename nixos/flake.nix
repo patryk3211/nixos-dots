@@ -4,8 +4,10 @@
     lanzaboote.url = "github:nix-community/lanzaboote";
   };
 
-  outputs = { self, nixpkgs, lanzaboote }: {
-    nixosConfigurations."Laptop-NixOS" = nixpkgs.lib.nixosSystem {
+  outputs = { self, nixpkgs, lanzaboote }: let
+    hostnameMod = import ./hostname.nix { };
+  in {
+    nixosConfigurations.${hostnameMod.networking.hostName} = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
 
       modules = [

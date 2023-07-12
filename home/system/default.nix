@@ -1,6 +1,10 @@
 { config, pkgs, ... }:
 
 {
+  home.packages = with pkgs; [
+    papirus-icon-theme
+  ];
+
   home.pointerCursor = {
     name = "Catppuccin-Frappe-Light-Cursors";
     size = 16;

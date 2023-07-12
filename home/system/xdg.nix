@@ -4,7 +4,7 @@ let
 
   vlc = [ "vlc.desktop" ];
   image = [ "com.github.weclaw1.ImageRoll.desktop" ];
-  filemanager = [ "nnn.desktop" ];
+  filemanager = [ "org.kde.dolphin.desktop" ];
   pdf = [ "atril.desktop" ];
   texteditor = [ "nvim.desktop" ];
   archiver = [ "org.gnome.FileRoller.desktop" ];

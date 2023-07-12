@@ -9,6 +9,10 @@
       name = "Catppuccin-Frappe-Standard-Blue-dark";
     };
 
+    iconTheme = {
+      name = "Papirus-Dark";
+    };
+
     gtk3.extraConfig = {
       gtk-application-prefer-dark-theme = 1;
     };

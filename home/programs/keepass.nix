@@ -19,8 +19,8 @@
       echo "Uploading database"
       printf "put %s %s\nexit\n" "${localFile}" "${remoteFile}" |
         ${pkgs.openssh}/bin/sftp -i $SSH_KEY $REMOTE_USER@$REMOTE_ADDRESS &&
-        ${pkgs.dunst}/bin/dunstify "Database uploaded" "KeepassXC database successfully uploaded to remote server" ||
-        ${pkgs.dunst}/bin/dunstify "Database upload failed" "Failed to upload KeepassXC database to remote server" -u critical
+        ${pkgs.dunst}/bin/dunstify -i keepassxc "Database uploaded" "KeepassXC database successfully uploaded to remote server" ||
+        ${pkgs.dunst}/bin/dunstify -i keepassxc "Database upload failed" "Failed to upload KeepassXC database to remote server" -u critical
     }
 
     download_db

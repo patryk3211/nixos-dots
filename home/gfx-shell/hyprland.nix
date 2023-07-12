@@ -55,6 +55,7 @@
       exec-once = hyprctl setcursor $XCURSOR_THEME $XCURSOR_SIZE
 
       exec-once = keepassxc
+      exec-once = betterbird
 
       input {
         kb_layout = pl
@@ -129,12 +130,24 @@
         binde = , right, resizeactive, 10 0
         binde = , up, resizeactive, 0 -10
         binde = , down, resizeactive, 0 10
+
+        binde = $mod, left, resizeactive, -50 0
+        binde = $mod, right, resizeactive, 50 0
+        binde = $mod, up, resizeactive, 0 -50
+        binde = $mod, down, resizeactive, 0 50
+
         bind = , escape, submap, reset
       submap = move
         binde = , left, moveactive, -10 0
         binde = , right, moveactive, 10 0
         binde = , up, moveactive, 0 -10
         binde = , down, moveactive, 0 10
+
+        binde = $mod, left, moveactive, -50 0
+        binde = $mod, right, moveactive, 50 0
+        binde = $mod, up, moveactive, 0 -50
+        binde = $mod, down, moveactive, 0 50
+
         bind = , escape, submap, reset
       submap = reset
 
@@ -152,6 +165,7 @@
       windowrule = idleinhibit none, (.*)
 
       windowrule = workspace 9, org\.keepassxc\.KeePassXC
+      windowrule = workspace 8, betterbird
     '';
   };
 

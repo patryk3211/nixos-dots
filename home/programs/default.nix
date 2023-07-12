@@ -12,8 +12,8 @@
     krita
     webcord
     betterbird
-    dolphin
     nvim.packages.x86_64-linux.default
+    gnome.nautilus
   ];
 
   imports = [

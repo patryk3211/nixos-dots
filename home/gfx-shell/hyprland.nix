@@ -157,8 +157,8 @@ with lib;
       # Window rules
       windowrule = idleinhibit none, (.*)
 
-      windowrule = workspace 9, org\.keepassxc\.KeePassXC
-      windowrule = workspace 8, thunderbird
+      windowrule = workspace 9 silent, org\.keepassxc\.KeePassXC
+      windowrule = workspace 8 silent, thunderbird
     '';
   };
 

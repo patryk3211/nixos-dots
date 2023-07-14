@@ -1,4 +1,4 @@
-{ config, nvim, pkgs, ... }:
+{ config, pkgs, ... }:
 
 {
   home.packages = with pkgs; [
@@ -11,8 +11,9 @@
     gnome.file-roller
     krita
     webcord
-    betterbird
-    nvim.packages.x86_64-linux.default
+    thunderbird
+    neovim
+    #nvim.packages.x86_64-linux.default
     gnome.nautilus
   ];
 

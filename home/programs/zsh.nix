@@ -6,8 +6,8 @@
     enableAutosuggestions = true;
 
     shellAliases = {
-      nixos-update = "sudo nixos-rebuild switch";
-      hm-update = "home-manager switch";
+      nixos-update = "sudo nixos-rebuild switch --flake /.nixcfg";
+      hm-update = "home-manager switch --flake /.nixcfg";
       ll = "ls -lah";
       icat = "kitty +kitten icat";
     };

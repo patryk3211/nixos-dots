@@ -1,5 +1,5 @@
-{ config, pkgs, ... }:
-
+{ config, lib, pkgs, ... }:
+with lib;
 {
   home.packages = with pkgs; [
     playerctl
@@ -23,6 +23,7 @@
   wayland.windowManager.hyprland = {
     enable = true;
     xwayland.enable = true;
+    nvidiaPatches = true;
 
     recommendedEnvironment = true;
 
@@ -34,19 +35,11 @@
       monitor = HDMI-A-1, 1920x1080@60, 0x0, 1
 
       # Configure environment
-      env = _JAVA_AWT_WM_NONREPARENTING,1
-      env = GDK_BACKEND,wayland,x11
-      env = SDL_VIDEODRIVER,wayland
-      env = CLUTTER_BACKEND,wayland
-
-      env = XDG_CURRENT_DESKTOP,Hyprland
-      env = XDG_SESSION_TYPE,wayland
-      env = XDG_SESSION_DESKTOP,Hyprland
-
-      env = QT_QPA_PLATFORM,wayland;xcb
-      env = QT_AUTO_SCREEN_SCALE_FACTOR,1
-      env = QT_WAYLAND_DISABLE_WINDOWDECORATION,1
-      env = QT_QPA_PLATFORMTHEME,qt5ct
+      ${concatStringsSep "\n" (
+        attrsets.mapAttrsToList (n: v:
+          "env = ${n},${v}"
+        ) config.profile.hyprland.env
+      )}
 
       env = XCURSOR_SIZE,${toString config.home.pointerCursor.size}
       env = XCURSOR_THEME,${config.home.pointerCursor.name}
@@ -55,7 +48,7 @@
       exec-once = hyprctl setcursor $XCURSOR_THEME $XCURSOR_SIZE
 
       exec-once = keepassxc
-      exec-once = betterbird
+      exec-once = thunderbird
 
       input {
         kb_layout = pl
@@ -165,7 +158,7 @@
       windowrule = idleinhibit none, (.*)
 
       windowrule = workspace 9, org\.keepassxc\.KeePassXC
-      windowrule = workspace 8, betterbird
+      windowrule = workspace 8, thunderbird
     '';
   };
 

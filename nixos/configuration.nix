@@ -6,8 +6,6 @@
 
 {
   imports = [
-    ./hardware-configuration.nix
-    ./hostname.nix
     ./user.nix
   ];
 
@@ -16,6 +14,14 @@
     extraOptions = ''
       experimental-features = nix-command flakes
     '';
+    settings = {
+      extra-substituters = [
+        "https://hyprland.cachix.org"     
+      ];
+      trusted-public-keys = [
+        "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
+      ];
+    };
   };
 
   /*boot = {
@@ -26,6 +32,7 @@
     };
   };*/
 
+  networking.hostName = config.profile.hostname;
   networking.networkmanager.enable = true;
 
   time.timeZone = "Europe/Warsaw";
@@ -87,9 +94,20 @@
     enable = true;
     extraPortals = [ pkgs.xdg-desktop-portal-hyprland ];
   };
-  hardware.opengl.enable = true;
+  hardware.opengl = {
+    enable = true;
+    driSupport = true;
+    driSupport32Bit = true;
+  };
 
   security.pam.services.swaylock = {};
+
+  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
+    "nvidia-settings"
+    "nvidia-x11"
+  ];
+
+  hardware.enableRedistributableFirmware = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];

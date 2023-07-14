@@ -1,6 +1,2 @@
 result
 
-/nixos/hardware-configuration.nix
-/nixos/hostname.nix
-/home/user.nix
-

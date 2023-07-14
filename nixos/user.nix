@@ -4,7 +4,7 @@
   programs.zsh.enable = true;
   users.defaultUserShell = pkgs.zsh;
 
-  users.users.patryk = {
+  users.users.${config.profile.username} = {
     isNormalUser = true;
     extraGroups = [ "wheel" "networkmanager" "video" ];
   };

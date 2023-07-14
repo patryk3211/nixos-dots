@@ -594,11 +594,11 @@
         "which-key": "which-key"
       },
       "locked": {
-        "lastModified": 1689322685,
-        "narHash": "sha256-AjDhEuqSi1NvdM56UJ6WWVm9cufkrGpVsGqSTy2YLz0=",
+        "lastModified": 1689351040,
+        "narHash": "sha256-gOR0/cW4UhHlC+QoJ+1NONgRk3dug2gIb9sDGoI8/1I=",
         "owner": "patryk3211",
         "repo": "neovim-flake",
-        "rev": "31ab3907ab978367006d3339e3c739026dfb446c",
+        "rev": "439fc06c22c32e99648e97500d8188bf31b060ca",
         "type": "github"
       },
       "original": {

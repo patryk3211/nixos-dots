@@ -11,7 +11,7 @@ in {
     Unit = {
       Description = "Add keys to ssh agent";
       Requires = [ "ssh-agent.service" ];
-      After = [ "ssh-agent.target" ];
+      After = [ "ssh-agent.service" ];
     };
     Install = {
       WantedBy = [ "default.target" ];

@@ -10,6 +10,7 @@
       hm-update = "home-manager switch --flake /.nixcfg";
       ll = "ls -lah";
       icat = "kitty +kitten icat";
+      hm = "home-manager";
     };
 
     plugins = [

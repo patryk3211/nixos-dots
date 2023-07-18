@@ -2,19 +2,12 @@
 
 {
   home.packages = with pkgs; [
-    vlc
-    image-roll
     libreoffice
-    btop
-    mate.atril
-    kalker
-    gnome.file-roller
     krita
     webcord
     thunderbird
     neovim
-    #nvim.packages.x86_64-linux.default
-    gnome.nautilus
+    discord
   ];
 
   imports = [
@@ -24,6 +17,8 @@
     ./git.nix
     ./ssh-agent.nix
     ./keepass.nix
+    ./3d.nix
+    ./utilities.nix
 #    ./nvim
   ];
 }

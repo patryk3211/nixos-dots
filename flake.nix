@@ -24,6 +24,10 @@
       url = "github:oxalica/rust-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nix-gaming = {
+      url = "github:fufexan/nix-gaming";
+    };
   };
 
   outputs = { nixpkgs,
@@ -33,6 +37,7 @@
               eww,
               nvim,
               rust-overlay,
+              nix-gaming,
               ... }: let
     system = "x86_64-linux";
     userMod = import ./user.nix { };
@@ -46,6 +51,7 @@
         ./profile
         ./nixos/configuration.nix
         ./profile/${userMod.profile.hostname}/hardware-configuration.nix
+        ./profile/${userMod.profile.hostname}/os.nix
       ];
     };
 
@@ -53,7 +59,12 @@
       pkgs = (import nixpkgs { inherit system; overlays = [
         rust-overlay.overlays.default
         eww.overlays.default
-        (final: prev: { neovim = nvim.packages.x86_64-linux.default; })
+        (final: prev: {
+          neovim = nvim.packages.x86_64-linux.default;
+          steam = prev.steam.override {
+            extraProfile = "export STEAM_EXTRA_COMPAT_TOOLS_PATHS='${nix-gaming.packages.x86_64-linux.proton-ge}'";
+          };
+        })
       ]; });
 
       modules = [

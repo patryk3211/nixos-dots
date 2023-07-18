@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+
+current_mode() {
+  hyprctl getoption input:follow_mouse | rg '\s*int:\s*(\d+)' -r '$1'
+}
+
+set_mode() {
+  hyprctl keyword input:follow_mouse $1
+}
+
+case $1 in
+  t|toggle)
+    if [[ "$(current_mode)" -eq '1' ]]; then
+      SET_MODE=2
+    else
+      SET_MODE=1
+    fi
+    set_mode $SET_MODE
+    ;;
+  l|lossy)
+    set_mode 1
+    ;;
+  h|hard)
+    set_mode 2
+    ;;
+esac
+

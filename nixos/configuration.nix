@@ -85,7 +85,10 @@
   programs.dconf.enable = true;
   xdg.portal = {
     enable = true;
-    extraPortals = [ pkgs.xdg-desktop-portal-hyprland ];
+    extraPortals = with pkgs; [
+      xdg-desktop-portal-hyprland
+      xdg-desktop-portal-gtk
+    ];
   };
   hardware.opengl = {
     enable = true;
@@ -101,6 +104,11 @@
   ];
 
   hardware.enableRedistributableFirmware = true;
+
+  zramSwap = {
+    enable = true;
+    memoryMax = 4 * 1024 * 1024 * 1024;
+  };
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];

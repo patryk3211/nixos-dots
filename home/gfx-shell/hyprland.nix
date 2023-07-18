@@ -52,6 +52,8 @@ with lib;
 
       input {
         kb_layout = pl
+
+        follow_mouse = 2
       }
 
       general {
@@ -65,6 +67,11 @@ with lib;
 
       decoration {
         rounding = 8
+      }
+
+      misc {
+        vrr = 1
+        vfr = false
       }
 
       # Hyprland actions
@@ -144,6 +151,8 @@ with lib;
         bind = , escape, submap, reset
       submap = reset
 
+      bind = $mod ALT, M, exec, hypr-mousemode toggle
+
       # Media keys
       bindl = , XF86AudioPlay, exec, playerctl play-pause
       bindl = , XF86AudioPrev, exec, playerctl previous
@@ -159,6 +168,9 @@ with lib;
 
       windowrule = workspace 9 silent, org\.keepassxc\.KeePassXC
       windowrule = workspace 8 silent, thunderbird
+
+      windowrule = idleinhibit focus, steam_app\.*
+      windowrule = fullscreen, steam_app_1511460
     '';
   };
 

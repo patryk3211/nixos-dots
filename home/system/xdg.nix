@@ -38,26 +38,26 @@ in {
 
         "application/x-directory" = filemanager;
         "text/directory" = filemanager;
-	"inode/directory" = filemanager;
+        "inode/directory" = filemanager;
 
-	"applications/pdf" = pdf;
+        "applications/pdf" = pdf;
 
-	"text/*" = texteditor;
+        "text/*" = texteditor;
 
-	"application/gzip" = archiver;
-	"application/x-tar" = archiver;
-	"application/zip" = archiver;
-	"application/x-7z-compressed" = archiver;
-	"application/x-bzip" = archiver;
-	"application/x-bzip2" = archiver;
-	"application/vnd.rar" = archiver;
+        "application/gzip" = archiver;
+        "application/x-tar" = archiver;
+        "application/zip" = archiver;
+        "application/x-7z-compressed" = archiver;
+        "application/x-bzip" = archiver;
+        "application/x-bzip2" = archiver;
+        "application/vnd.rar" = archiver;
 
-	"application/msword" = [ "writer.desktop" ];
-	"application/vnd-openxmlformats-officedocument.wordprocessingml.document" = [ "writer.desktop" ];
-	"application/vnd.ms-powerpoint" = [ "impress.desktop" ];
-	"application/vnd-openxmlformats-officedocument.presentationml.presentation" = [ "impress.desktop" ];
-	"application/vnd.ms-excel" = [ "calc.desktop" ];
-	"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" = [ "calc.desktop" ];
+        "application/msword" = [ "writer.desktop" ];
+        "application/vnd-openxmlformats-officedocument.wordprocessingml.document" = [ "writer.desktop" ];
+        "application/vnd.ms-powerpoint" = [ "impress.desktop" ];
+        "application/vnd-openxmlformats-officedocument.presentationml.presentation" = [ "impress.desktop" ];
+        "application/vnd.ms-excel" = [ "calc.desktop" ];
+        "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" = [ "calc.desktop" ];
       };
     };
   };

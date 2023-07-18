@@ -75,5 +75,6 @@
     "steam"
     "steam-original"
     "steam-run"
+    "discord"
   ];
 }

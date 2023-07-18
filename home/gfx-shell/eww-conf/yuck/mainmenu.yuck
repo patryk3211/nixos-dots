@@ -1,0 +1,13 @@
+(defwidget mainmenu []
+
+)
+
+(defwindow mainmenu
+    :monitor 0
+    :stacking "fg"
+    :geometry (geometry :x "0px"
+                        :y "0px"
+                        :width "100%"
+                        :height "100%")
+  (mainmenu)
+)

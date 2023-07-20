@@ -110,6 +110,8 @@
     memoryMax = 4 * 1024 * 1024 * 1024;
   };
 
+  services.udev.packages = [ pkgs.platformio ];
+
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];

@@ -6,7 +6,7 @@
 
   users.users.${config.profile.username} = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" "video" ];
+    extraGroups = [ "wheel" "networkmanager" "video" "dialout" ];
   };
 
   environment.pathsToLink = [ "/share/zsh" ];

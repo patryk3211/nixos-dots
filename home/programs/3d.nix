@@ -3,6 +3,9 @@
 {
   home.packages = with pkgs; [
     freecad
-    cura
+  ];
+
+  imports = [
+    ./cura.nix
   ];
 }

@@ -28,7 +28,7 @@ delay() {
 }
 
 clipboard() {
-  wl-copy -p -t image/png && dunstify -u low "Copied to clipboard."
+  wl-copy -t image/png && dunstify -u low "Copied to clipboard."
 }
 
 shot_screen() {

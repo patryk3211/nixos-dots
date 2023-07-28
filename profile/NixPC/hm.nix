@@ -20,4 +20,13 @@
       };
     };
   };
+
+  programs.git.signing = {
+    signByDefault = true;
+    key = "B6D04B0A52E0AFF3";
+  };
+
+  imports = [
+    ./programs
+  ];
 }

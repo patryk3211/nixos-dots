@@ -1,6 +1,4 @@
-{ config, pkgs, ... }: let
-  bcnc = import ./bcnc.nix { inherit pkgs; fetchurl = pkgs.fetchurl; fetchhg = pkgs.fetchhg; };
-in {
+{ config, pkgs, ... }: {
   home.packages = with pkgs; [
     libreoffice
     krita
@@ -8,10 +6,6 @@ in {
     thunderbird
     neovim
     discord
-    (python311.withPackages(ps: [
-      pkgs.python311Packages.cython
-      (bcnc ps).bCNC
-    ]))
   ];
 
   imports = [
@@ -23,7 +17,7 @@ in {
     ./keepass.nix
     ./3d.nix
     ./utilities.nix
-#    ./nvim
+    ./gpg.nix
   ];
 
   xdg.desktopEntries."bCNC.desktop" = {
@@ -31,5 +25,16 @@ in {
     exec = "bCNC";
     icon = "bCNC";
     terminal = false;
+  };
+
+  xdg.desktopEntries."kalker" = {
+    name = "Kalker";
+    exec = "${pkgs.kalker}/bin/kalker";
+    type = "Application";
+    terminal = true;
+    icon = "kalker";
+    settings = {
+      Keywords = "Calculator;";
+    };
   };
 }

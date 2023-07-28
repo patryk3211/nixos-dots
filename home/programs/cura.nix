@@ -9,7 +9,7 @@
 in {
   home.packages = [ package ];
 
-  xdg.desktopEntries."Ultimaker.desktop" = {
+  xdg.desktopEntries."Ultimaker" = {
     name = "Ultimaker Cura";
     genericName = "3D Printing Software";
     exec = "${package}/bin/ultimaker-cura %F";
@@ -17,7 +17,7 @@ in {
     icon = "cura-icon";
     terminal = false;
     categories = [ "Graphics" ];
-    mimeType = [ "model/stl" "application/vnd.ms-3mfdocument" "application/prs.wavefront-obj" "image/bmp" "image/gif" "image/jpeg" "image/png" "text/x-gcode" "application/x-amf" "application/x-ply" "application/x-ctm" "model/vnd.collada+xml" "model/gltf-binary" "model/gltf+json" "model/vnd.collada+xml+zip" ];
+    mimeType = [ "model/stl" "application/vnd.ms-3mfdocument" "application/x-amf" "application/x-ply" "application/x-ctm" "model/vnd.collada+xml" "model/vnd.collada+xml+zip" ];
     settings = {
       Keywords = "3D;Printing;Slicer;";
       StartupWMClass = "cura.real";

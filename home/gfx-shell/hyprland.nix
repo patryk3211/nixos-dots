@@ -163,6 +163,8 @@ with lib;
       
       bindl = , XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
 
+      bindl = $mod, M, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle
+
       # Window rules
       windowrule = idleinhibit none, (.*)
 

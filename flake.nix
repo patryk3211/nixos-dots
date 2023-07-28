@@ -49,9 +49,8 @@
         lanzaboote.nixosModules.lanzaboote
         ./user.nix
         ./profile
-        ./nixos/configuration.nix
-        ./profile/${userMod.profile.hostname}/hardware-configuration.nix
         ./profile/${userMod.profile.hostname}/os.nix
+        ./nixos/configuration.nix
       ];
     };
 
@@ -72,7 +71,7 @@
         { imports = [
             ./user.nix
             ./profile
-            ./profile/${userMod.profile.hostname}
+            ./profile/${userMod.profile.hostname}/hm.nix
             ./home/home.nix
           ];
         }

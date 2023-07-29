@@ -85,7 +85,9 @@ with lib;
       bind = $mod, N, exec, pkill rofi || rofi-launcher
       bind = $mod, R, exec, pkill rofi || rofi-runner
       bind = , PRINT, exec, pkill rofi || rofi-screenshot
-      bind = $mod, C, exec, kitty kalker
+      bind = $mod, C, exec, pkill rofi || rofi-kalker
+
+      bind = $mod SHIFT, C, exec, kitty kalker
 
       # Focus moving
       bind = $mod, up, movefocus, u

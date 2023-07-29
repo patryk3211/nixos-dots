@@ -32,7 +32,7 @@
     exec = "${pkgs.kalker}/bin/kalker";
     type = "Application";
     terminal = true;
-    icon = "kalker";
+    icon = "calc";
     settings = {
       Keywords = "Calculator;";
     };

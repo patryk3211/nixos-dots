@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+rofi_cmd="rofi -theme $HOME/.config/rofi/kalker.rasi -dmenu"
+
+expression=$($rofi_cmd)
+result=$(kalker "$expression")
+
+dunstify -u low "Kalker" "$expression = $result"
+

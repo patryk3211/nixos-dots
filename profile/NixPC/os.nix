@@ -5,5 +5,11 @@
     ./hardware-configuration.nix
   ];
 
-  boot.kernelPackages = pkgs.linuxPackages_zen;
+  boot = {
+    kernelPackages = pkgs.linuxPackages_zen;
+
+    tmp = {
+      useTmpfs = true;
+    };
+  };
 }

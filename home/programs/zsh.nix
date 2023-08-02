@@ -11,6 +11,7 @@
       ll = "ls -lah";
       icat = "kitty +kitten icat";
       hm = "home-manager";
+      ssh = "kitty +kitten ssh";
     };
 
     plugins = [

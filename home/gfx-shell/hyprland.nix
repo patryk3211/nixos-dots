@@ -75,7 +75,7 @@ with lib;
       }
 
       # Hyprland actions
-      bind = $mod SHIFT, E, exec, pkill Hyprland
+      bind = $mod SHIFT, E, exec, loginctl terminate-user 1000
       bind = $mod, Q, killactive
       bind = $mod, F, fullscreen
       bind = $mod, T, togglefloating
@@ -170,10 +170,15 @@ with lib;
       # Window rules
       windowrule = idleinhibit none, (.*)
 
-      windowrule = workspace 9 silent, org\.keepassxc\.KeePassXC
+      windowrule = workspace 4, firefox
+      windowrule = workspace 6, discord
+
+      windowrulev2 = workspace 9 silent, class:(org\.keepassxc\.KeePassXC),floating:0
       windowrule = workspace 8 silent, thunderbird
 
-      windowrule = idleinhibit focus, steam_app\.*
+      windowrule = stayfocused, org\.keepassxc\.KeePassXC
+
+      windowrule = idleinhibit focus, steam_app.*
       windowrule = fullscreen, steam_app_1511460
     '';
   };

@@ -59,6 +59,12 @@
     pulse.enable = true;
     alsa.enable = true;
     alsa.support32Bit = true;
+
+    lowLatency = {
+      enable = true;
+      quantum = 64;
+      rate = 48000;
+    };
   };
 
   # Enable touchpad support (enabled default in most desktopManager).

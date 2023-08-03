@@ -16,6 +16,7 @@
           framerate = "60";
           position = "0x0";
           scale = "1";
+          wallpaper = "${config.home.homeDirectory}/.config/hypr/wallpaper.jpg";
         };
       };
     };

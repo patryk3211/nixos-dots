@@ -47,6 +47,7 @@
 
       modules = [
         lanzaboote.nixosModules.lanzaboote
+        nix-gaming.nixosModules.pipewireLowLatency
         ./user.nix
         ./profile
         ./profile/${userMod.profile.hostname}/os.nix

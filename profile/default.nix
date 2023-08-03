@@ -15,6 +15,10 @@ let
       scale = mkOption {
         type = types.str;
       };
+
+      wallpaper = mkOption {
+        type = types.nullOr types.str;
+      };
     };
   };
 in {

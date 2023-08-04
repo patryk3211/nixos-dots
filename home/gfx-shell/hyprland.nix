@@ -127,8 +127,8 @@ with lib;
     rules = [
       { rule = "idleinhibit none"; target = "(.*)"; }
       
-      { rule = "workspace 4"; target = "firefox"; }
-      { rule = "workspace 6"; target = "discord"; }
+      { rule = "workspace 4 silent"; target = "firefox"; }
+      { rule = "workspace 6 silent"; target = "discord"; }
       { rule = "workspace 8 silent"; target = "thunderbird"; }
       { rule = "workspace 9 silent"; target = "class:(org\.keepassxc\.KeePassXC),floating:0"; v2 = true; }
 

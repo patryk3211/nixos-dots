@@ -41,15 +41,19 @@
               ... }: let
     system = "x86_64-linux";
     userMod = import ./user.nix { };
+
+    globalConf = [
+      ./user.nix
+      ./profile
+      ./theme
+    ];
   in {
     nixosConfigurations.${userMod.profile.hostname} = nixpkgs.lib.nixosSystem {
       inherit system;
 
-      modules = [
+      modules = globalConf ++ [
         lanzaboote.nixosModules.lanzaboote
         nix-gaming.nixosModules.pipewireLowLatency
-        ./user.nix
-        ./profile
         ./profile/${userMod.profile.hostname}/os.nix
         ./nixos/configuration.nix
       ];
@@ -67,11 +71,9 @@
         })
       ]; });
 
-      modules = [
+      modules = globalConf ++ [
         hyprland.homeManagerModules.default
         { imports = [
-            ./user.nix
-            ./profile
             ./profile/${userMod.profile.hostname}/hm.nix
             ./home/home.nix
           ];

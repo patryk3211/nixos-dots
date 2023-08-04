@@ -82,19 +82,20 @@ in {
       # Monitors
       ${concatStringsSep "\n" (attrsets.mapAttrsToList (n: v:
         "monitor = ${n}, ${v.resolution}@${v.framerate}, ${v.position}, ${v.scale}"
-      ) config.profile.hyprland.monitors)}
+      ) config.profile.wm.monitors)}
 
       # Configure environment
       ${concatStringsSep "\n" (
         attrsets.mapAttrsToList (n: v:
           "env = ${n},${v}"
-        ) config.profile.hyprland.env
+        ) config.profile.wm.env
       )}
 
       env = XCURSOR_SIZE,${toString config.home.pointerCursor.size}
       env = XCURSOR_THEME,${config.home.pointerCursor.name}
 
       # Startup programs
+      exec-once = dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY HYPRLAND_INSTANCE_SIGNATURE
       exec-once = eww open mainbar
       exec-once = hyprctl setcursor $XCURSOR_THEME $XCURSOR_SIZE
 

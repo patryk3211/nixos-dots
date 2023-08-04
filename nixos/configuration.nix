@@ -7,6 +7,7 @@
 {
   imports = [
     ./user.nix
+    ./greetd.nix
   ];
 
   nix = {
@@ -16,14 +17,6 @@
     '';
     settings.trusted-users = [ config.profile.username ];
   };
-
-  /*boot = {
-    bootspec.enable = true;
-    lanzaboote = {
-      enable = true;
-      pkiBundle = "/etc/secureboot";
-    };
-  };*/
 
   networking.hostName = config.profile.hostname;
   networking.networkmanager.enable = true;

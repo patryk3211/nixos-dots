@@ -1,7 +1,7 @@
 { lib, ... }:
 with lib;
 let
-  hyprlandMonitor = {...}: {
+  monitor = {...}: {
     options = {
       resolution = mkOption {
         type = types.str;
@@ -35,7 +35,7 @@ in {
       type = types.str;
     };
 
-    hyprland.env = mkOption {
+    wm.env = mkOption {
       type = types.attrsOf types.str;
       default = {
         _JAVA_AWT_WM_NONREPARENTING = "1";
@@ -54,8 +54,8 @@ in {
       };
     };
 
-    hyprland.monitors = mkOption {
-      type = types.attrsOf (types.submodule hyprlandMonitor);
+    wm.monitors = mkOption {
+      type = types.attrsOf (types.submodule monitor);
     };
   };
 }

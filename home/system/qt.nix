@@ -1,9 +1,7 @@
 { config, pkgs, ... }:
 
 {
-  home.packages = with pkgs; [
-    catppuccin-kvantum
-  ];
+  home.packages = [ config.theme.qt.package ];
 
   qt = {
     enable = true;
@@ -13,4 +11,9 @@
       package = pkgs.libsForQt5.qtstyleplugin-kvantum;
     };
   };
+
+  xdg.configFile."Kvantum/kvantum.kvconfig".text = ''
+    [General]
+    theme=${config.theme.qt.name}
+  '';
 }

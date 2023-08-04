@@ -1,14 +1,12 @@
 { config, pkgs, ... }:
 
 {
-  home.packages = with pkgs; [
-    papirus-icon-theme
-  ];
+  home.packages = [ config.theme.icon.package ];
 
   home.pointerCursor = {
-    name = "Catppuccin-Frappe-Light-Cursors";
+    name = config.theme.cursor.name;
     size = 16;
-    package = pkgs.catppuccin-cursors.frappeLight;
+    package = config.theme.cursor.package;
     gtk.enable = true;
   };
 

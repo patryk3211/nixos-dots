@@ -5,12 +5,15 @@
     enable = true;
 
     theme = {
-      package = pkgs.catppuccin-gtk;
-      name = "Catppuccin-Frappe-Standard-Blue-dark";
+      package = config.theme.gtk.package;
+      name = config.theme.gtk.name;
+      #package = pkgs.catppuccin-gtk;
+      #name = "Catppuccin-Frappe-Standard-Blue-dark";
     };
 
     iconTheme = {
-      name = "Papirus-Dark";
+      name = config.theme.icon.name;
+      #name = "Papirus-Dark";
     };
 
     gtk3.extraConfig = {

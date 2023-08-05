@@ -1,0 +1,89 @@
+#!/usr/bin/env bash
+
+if [[ -n "$1" ]]; then
+    case "$1" in
+        o|open)
+            eww open audio
+            eww update audio_open=true
+            ;;
+        c|close)
+            eww close audio
+            eww update audio_open=false
+            ;;
+    esac
+    exit
+fi
+
+get_default_source() {
+    jaq '.[] |
+          select(.type == "PipeWire:Interface:Metadata") |
+          select(.props."metadata.name" == "default") |
+            .metadata | .[] |
+            select(.key == "default.audio.source") |
+              .value.name' -r
+}
+
+get_default_sink() {
+    jaq '.[] |
+          select(.type == "PipeWire:Interface:Metadata") |
+          select(.props."metadata.name" == "default") |
+            .metadata[] |
+            select(.key == "default.audio.sink") |
+              .value.name' -r
+}
+
+get_node_by_name() {
+    jaq ".[] |
+          select(.type == \"PipeWire:Interface:Node\") |
+            select(.info.props.\"node.name\" == \"$1\")"
+}
+
+is_node_muted() {
+    jaq '.info.params.Props[0].mute'
+}
+
+node_volume() {
+    jaq '.info.params.Props[0].channelVolumes[0]'
+}
+
+MIC_MUTED="false"
+MIC_VOLUME=1
+SPEAKER_MUTED="false"
+SPEAKER_VOLUME=1
+
+pw-dump -m | jaq -cr | while read -er; do
+    NEW_SOURCE=$(echo $REPLY | get_default_source)
+    if [[ -n "$NEW_SOURCE" ]]; then
+        DEFAULT_SOURCE=$NEW_SOURCE
+    fi
+    NEW_SINK=$(echo $REPLY | get_default_sink)
+    if [[ -n "$NEW_SINK" ]]; then
+        DEFAULT_SINK=$NEW_SINK
+    fi
+
+    MIC_NODE=$(echo $REPLY | get_node_by_name $DEFAULT_SOURCE)
+    if [[ -n "$MIC_NODE" ]]; then
+        MIC_MUTED=$(echo $MIC_NODE | is_node_muted)
+        RAW_VOLUME=$(echo $MIC_NODE | node_volume)
+        MIC_VOLUME=$(kalker "cbrt($RAW_VOLUME)")
+    fi
+
+    SPEAKER_NODE=$(echo $REPLY | get_node_by_name $DEFAULT_SINK)
+    if [[ -n "$SPEAKER_NODE" ]]; then
+        SPEAKER_MUTED=$(echo $SPEAKER_NODE | is_node_muted)
+        RAW_VOLUME=$(echo $SPEAKER_NODE | node_volume)
+        SPEAKER_VOLUME=$(kalker "cbrt($RAW_VOLUME)")
+    fi
+
+    printf '{
+      "microphone": {
+        "mute": %s,
+        "volume": %s
+      },
+      "speaker": {
+        "mute": %s,
+        "volume": %s
+      }
+    }\n' $MIC_MUTED $MIC_VOLUME $SPEAKER_MUTED $SPEAKER_VOLUME | jaq -c
+done
+

@@ -27,7 +27,6 @@ socat -u unix-connect:/tmp/hypr/$HYPRLAND_INSTANCE_SIGNATURE/.socket2.sock - | r
     data=${line#*>>}
     case ${line%>>*} in
         workspace)
-            printf "%s\n" $data >&2
             focused_workspace=$data
 	    ;;
 	createworkspace)

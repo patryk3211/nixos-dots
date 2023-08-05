@@ -49,3 +49,23 @@
     margin: 0 6px;
     color: $lavender;
 }
+
+.audioindicator {
+    font-family: "FiraCode Nerd Font";
+    font-size: 16px;
+    margin-right: 16px;
+    padding: 0 4px;
+}
+
+.audioindicator.open {
+    background-color: $surface0;
+}
+
+.audioindicator .mute {
+    color: $red;
+}
+
+.audioindicator > label {
+    padding: 0 6px;
+}
+

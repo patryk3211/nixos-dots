@@ -12,6 +12,9 @@ let
     socat
     ripgrep
     librsvg
+    pipewire
+    wireplumber
+    kalker
   ];
 in {
   options.patmods.eww = {

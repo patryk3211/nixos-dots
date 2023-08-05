@@ -9,6 +9,8 @@
     ""
     (box :orientation "h"
          :halign "end"
+         :space-evenly false
+      (audioIndicator)
       (clock)
     )
   )
@@ -41,6 +43,18 @@
          :class "clock"
       (label :text {formattime(EWW_TIME, "%H:%M")}
              :class "time")
+    )
+  )
+)
+
+(defwidget audioIndicator []
+  (button :onclick {audio_open ? "scripts/audio close" : "scripts/audio open"}
+    (box :class `${audio_open ? "audioindicator open" : "audioindicator"}`
+         :space-evenly false
+      (label :class `${audio.speaker.mute ? "speaker mute" : "speaker"}`
+             :text `${audio.speaker.mute ? "󰟎" : "󰋋"}`)
+      (label :class `${audio.microphone.mute ? "microphone mute" : "microphone"}`
+             :text `${audio.microphone.mute ? "󰍭" : "󰍬"}`)
     )
   )
 )

@@ -8,6 +8,7 @@
     btop
     vlc
     image-roll
+    gnome.eog
     mate.atril
   ];
 }

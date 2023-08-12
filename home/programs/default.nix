@@ -6,6 +6,8 @@
     thunderbird
     neovim
     discord
+    openjdk17
+    distrobox
   ];
 
   imports = [

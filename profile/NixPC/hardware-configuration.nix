@@ -64,7 +64,18 @@ in {
     mesa
   ];
 
-  services.xserver.videoDrivers = [ "nvidia" "modesetting" "fbcon" ];
+  services.xserver = {
+    enable = true;
+    # This is just for Hyprland to work
+    # Xserver is configured elsewhere for nvidia-settings to work
+    videoDrivers = [ "nvidia" /*"modesetting" "fbcon"*/ ];
+    deviceSection = ''
+      Option "Coolbits" "28"
+    '';
+  };
+
+  hardware.opengl.extraPackages = [ pkgs.vaapiVdpau ];
+
   hardware.nvidia = {
     modesetting.enable = true;
 

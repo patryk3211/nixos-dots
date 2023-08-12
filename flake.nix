@@ -66,8 +66,9 @@
         (final: prev: {
           neovim = nvim.packages.x86_64-linux.default;
           steam = prev.steam.override {
-            extraProfile = "export STEAM_EXTRA_COMPAT_TOOLS_PATHS='${nix-gaming.packages.x86_64-linux.proton-ge}'";
+            extraProfile = "export STEAM_EXTRA_COMPAT_TOOLS_PATHS='${nix-gaming.packages.${prev.system}.proton-ge}'";
           };
+          wine = nix-gaming.packages.${prev.system}.wine-ge;
         })
       ]; });
 

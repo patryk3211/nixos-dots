@@ -25,7 +25,7 @@ with lib;
     modKey = "SUPER";
     
     startup = [
-      "keepassxc"
+      "[workspace 9 silent] keepassxc"
       "thunderbird"
     ];
 
@@ -130,10 +130,18 @@ with lib;
       { rule = "workspace 4 silent"; target = "firefox"; }
       { rule = "workspace 6 silent"; target = "discord"; }
       { rule = "workspace 8 silent"; target = "thunderbird"; }
-      { rule = "workspace 9 silent"; target = "class:(org\.keepassxc\.KeePassXC),floating:0"; v2 = true; }
+      # { rule = "workspace 9 silent"; target = "class:(org\.keepassxc\.KeePassXC),floating:0"; v2 = true; }
+
+      { rule = "noinitialfocus"; target = "discord"; }
+      { rule = "noinitialfocus"; target = "firefox"; }
 
       { rule = "idleinhibit focus"; target = "steam_app.*"; }
       { rule = "fullscreen"; target = "steam_app_1511460"; }
+
+      { rule = "workspace 1 silent"; target = "([Mm]inecraft.*)"; }
+
+      { rule = "stayfocused"; target = "(starship evo.exe)"; }
+      { rule = "forceinput"; target = "(starship evo.exe)"; }
     ];
   };
 

@@ -9,5 +9,15 @@ in {
       pkgs.python311Packages.cython
       (bcnc ps).bCNC
     ]))
+
+    helvum
+    easyeffects
+
+    # wineWowPackages.stable
+    winetricks
+    wine
+    #wineWowPackages.waylandFull
+
+    gwe
   ];
 }

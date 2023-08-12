@@ -100,6 +100,7 @@
   nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
     "nvidia-settings"
     "nvidia-x11"
+    "nvidia-persistenced"
   ];
 
   hardware.enableRedistributableFirmware = true;
@@ -110,6 +111,14 @@
   };
 
   services.udev.packages = [ pkgs.platformio ];
+
+  services.fstrim.enable = true;
+
+  virtualisation.docker = {
+    enable = true;
+    enableNvidia = true;
+    enableOnBoot = true;
+  };
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];

@@ -25,6 +25,7 @@
     noto-fonts
     fira-mono
     corefonts
+    emojione
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
     # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
@@ -59,6 +60,7 @@
   home.sessionVariables = {
     EDITOR = "nvim";
     NIX_BUILD_SHELL = "zsh";
+    TERMCMD = "kitty";
   };
 
   programs.home-manager.enable = true;
@@ -78,5 +80,8 @@
     "steam-run"
     "discord"
     "corefonts"
+    "cudatoolkit"
+    "nvidia-x11"
+    "nvidia-settings"
   ];
 }

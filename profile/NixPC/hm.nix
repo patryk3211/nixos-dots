@@ -10,4 +10,8 @@
     ./programs
     ./wm.nix
   ];
+
+  home.file.".xinitrc".text = ''
+    exec twm
+  '';
 }

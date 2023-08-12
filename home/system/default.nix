@@ -1,7 +1,11 @@
 { config, pkgs, ... }:
 
 {
-  home.packages = [ config.theme.icon.package ];
+  home.packages = with pkgs; [
+    config.theme.icon.package
+
+    udiskie
+  ];
 
   home.pointerCursor = {
     name = config.theme.cursor.name;
@@ -17,6 +21,11 @@
         color-scheme = "prefer-dark";
       };
     };
+  };
+
+  services.udiskie = {
+    enable = true;
+    notify = true;
   };
 
   imports = [

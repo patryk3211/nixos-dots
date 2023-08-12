@@ -62,6 +62,7 @@ in {
 
   environment.systemPackages = with pkgs; [
     mesa
+    nvidia-vaapi-driver
   ];
 
   services.xserver = {

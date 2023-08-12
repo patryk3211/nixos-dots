@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, pkgs, ... }:
 
 {
   programs.kitty = {
@@ -14,4 +14,6 @@
     settings = {
     } // config.patmods.colors.terminal;
   };
+
+  home.packages = [ (pkgs.writeShellScriptBin "nxterm" "exec -a $0 ${config.programs.kitty.package}/bin/kitty $@") ];
 }

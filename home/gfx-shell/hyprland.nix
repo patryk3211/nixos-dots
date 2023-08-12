@@ -9,6 +9,7 @@ with lib;
     wl-clipboard
     grim
     slurp
+    swappy
     jaq
   ];
 

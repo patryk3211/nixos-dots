@@ -10,14 +10,14 @@ window="󰖲 Capture Window"
 inthree="󰔝 Take in 3s"
 inten="󰔜 Take in 10s"
 
-view() {
-  image-roll $screendir/$filename
-  if [[ -e "$screendir/$filename" ]]; then
-    dunstify -u low "Screenshot saved."
-  else
-    dunstify -u low "Screenshot deleted."
-  fi
-}
+# view() {
+#   drawing $screendir/$filename
+#   if [[ -e "$screendir/$filename" ]]; then
+#     dunstify -u low "Screenshot saved."
+#   else
+#     dunstify -u low "Screenshot deleted."
+#   fi
+# }
 
 delay() {
   for i in $(seq $1 -1 1); do
@@ -27,28 +27,28 @@ delay() {
   dunstify -C 8512
 }
 
-clipboard() {
-  wl-copy -t image/png && dunstify -u low "Copied to clipboard."
-}
+# clipboard() {
+#   wl-copy -t image/png && dunstify -u low "Copied to clipboard."
+# }
 
 shot_screen() {
   sleep 0.5
-  grim -t png - | tee "$screendir/$filename" | clipboard
-  view
+  grim -t png - | swappy -f - -o "$screendir/$filename"  #| tee "$screendir/$filename" | clipboard
+  # view
 }
 
 shot_area() {
   sleep 0.5
   area=$(slurp)
-  grim -t png -g "$area" - | tee "$screendir/$filename" | clipboard
-  view
+  grim -t png -g "$area" - | swappy -f - -o "$screendir/$filename" #| tee "$screendir/$filename" | clipboard
+  # view
 }
 
 shot_window() {
   sleep 0.5
   area=$(hyprctl activewindow -j | jaq '.at[0], ",", .at[1], " ", .size[0], "x", .size[1], "\n"' -rj)
-  grim -t png -g "$area" - | tee "$screendir/$filename" | clipboard
-  view
+  grim -t png -g "$area" - | swappy -f - -o "$screendir/$filename" #| tee "$screendir/$filename" | clipboard
+  # view
 }
 
 if [[ ! -d "$screendir" ]]; then

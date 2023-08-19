@@ -61,13 +61,13 @@ in {
     systemd.user.services.eww = {
       Unit = {
         Description = "eww Daemon";
-	PartOf = [ "graphical-session.target" ];
-	After = [ "basic.target" ];
+        PartOf = [ "graphical-session.target" ];
+        After = [ "basic.target" ];
       };
       Service = {
         Environment = "PATH=/run/wrappers/bin:${makeBinPath dependencies}";
-	ExecStart = "${cfg.package}/bin/eww daemon --no-daemonize";
-	Restart = "on-failure";
+        ExecStart = "${cfg.package}/bin/eww daemon --no-daemonize";
+        Restart = "on-failure";
       };
       Install = {
         WantedBy = [ "graphical-session.target" ];

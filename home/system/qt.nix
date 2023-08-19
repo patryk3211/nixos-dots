@@ -8,7 +8,7 @@
     platformTheme = "qtct";
     style = {
       name = "kvantum";
-      package = pkgs.libsForQt5.qtstyleplugin-kvantum;
+      # package = pkgs.libsForQt5.qtstyleplugin-kvantum;
     };
   };
 

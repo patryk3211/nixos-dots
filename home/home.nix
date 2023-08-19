@@ -38,6 +38,7 @@
     # (pkgs.writeShellScriptBin "my-hello" ''
     #   echo "Hello, ${config.home.username}!"
     # '')
+    gnomeExtensions.gsconnect
   ];
 
   fonts.fontconfig.enable = true;
@@ -61,6 +62,7 @@
     EDITOR = "nvim";
     NIX_BUILD_SHELL = "zsh";
     TERMCMD = "kitty";
+    NAUTILUS_4_EXTENSION_DIR = "${config.home.profileDirectory}/lib/nautilus/extensions-4";
   };
 
   programs.home-manager.enable = true;

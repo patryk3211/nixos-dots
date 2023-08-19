@@ -12,6 +12,7 @@
       icat = "kitty +kitten icat";
       hm = "home-manager";
       ssh = "kitty +kitten ssh";
+      nix-edit = "cd /.nixcfg && nvim .";
     };
 
     plugins = [

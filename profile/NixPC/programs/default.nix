@@ -19,5 +19,7 @@ in {
     #wineWowPackages.waylandFull
 
     gwe
+
+    ffmpeg
   ];
 }

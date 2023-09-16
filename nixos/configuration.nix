@@ -160,6 +160,11 @@
     enableOnBoot = true;
   };
 
+  system.activationScripts.binbash = ''
+    mkdir -m 755 -p /bin
+    ln -sfn ${pkgs.bash}/bin/bash /bin/bash
+  '';
+
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];

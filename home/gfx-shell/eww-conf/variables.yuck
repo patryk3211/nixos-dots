@@ -7,4 +7,5 @@
 
 (deflisten hyprland :initial "{\"workspaces\":[]}" "scripts/hyprland")
 (deflisten audio "scripts/audio")
+(deflisten music "scripts/music")
 

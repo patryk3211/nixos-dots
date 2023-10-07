@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+playerctl metadata -f '{ "status": "{{status}}", "title": "{{title}}", "artist": "{{artist}}", "image": "{{mpris:artUrl}}" }' -F
+

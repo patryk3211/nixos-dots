@@ -40,7 +40,7 @@
 }
 
 .clock .time {
-    font-size: 14px;
+    font-size: 17px;
 }
 
 .mainmenu {
@@ -51,11 +51,17 @@
 }
 
 .container {
-    margin: 2px 8px 2px 0px;
-    padding: 2px 4px;
+    margin-right: 10px;
+    padding: 4px;
     background-color: $mantle;
-    border-radius: 2px;
-    border: 1px solid $surface0;
+    border-radius: 8px;
+    border-width: 0px 1px;
+    border-style: solid;
+    border-color: $surface0;
+}
+
+.audio {
+    font-size: 16px;
 }
 
 .audio .mute {
@@ -87,3 +93,28 @@
         }
     }
 }
+
+.playerstatus {
+    background-color: $mantle;
+    border-radius: 100px;
+    padding-right: 10px;
+}
+
+.playerstatus .separator {
+    background-color: $text;
+    border-radius: 100%;
+    margin: 15px 5px 13px 5px;
+    min-width: 4px;
+}
+
+.playerstatus .image {
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    min-width: 32px;
+
+    border-radius: 50%;
+    margin-right: 6px;
+}
+

@@ -15,6 +15,7 @@ let
     pipewire
     wireplumber
     kalker
+    playerctl
   ];
 in {
   options.patmods.eww = {

@@ -6,7 +6,11 @@
       	"")
       (workspaces)
     )
-    ""
+    (revealer :duration "500ms"
+              :transition "slideleft"
+              :reveal {music.status == "Playing"}
+      (playerstatus)
+    )
     (box :orientation "h"
          :halign "end"
          :space-evenly false
@@ -95,6 +99,21 @@
                :text `${audio.microphone.mute ? "󰍭" : "󰍬"}`)
       )
     )
+  )
+)
+
+(defwidget playerstatus []
+  (box :orientation "h"
+       :space-evenly false
+       :class "playerstatus"
+    (box :class "image"
+         :style "background-image: url('${music.image}');")
+    (label :class "title"
+           :text `${music.title}`)
+    (box :class "separator")
+           ;; :text "·")
+    (label :class "artist"
+           :text `${music.artist}`)
   )
 )
 

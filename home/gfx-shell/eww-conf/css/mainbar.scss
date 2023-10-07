@@ -50,22 +50,40 @@
     color: $lavender;
 }
 
-.audioindicator {
-    font-family: "FiraCode Nerd Font";
-    font-size: 16px;
-    margin-right: 16px;
-    padding: 0 4px;
+.container {
+    margin: 2px 8px 2px 0px;
+    padding: 2px 4px;
+    background-color: $mantle;
+    border-radius: 2px;
+    border: 1px solid $surface0;
 }
 
-.audioindicator.open {
-    background-color: $surface0;
-}
-
-.audioindicator .mute {
+.audio .mute {
     color: $red;
 }
 
-.audioindicator > label {
-    padding: 0 6px;
+.audio .icon {
+    padding: 0px 4px;
 }
 
+.volumebar {
+    margin: 1px 6px;
+
+    .icon {
+        font-size: 20px;
+        margin-top: 6px;
+    }
+
+    .volume {
+        trough {
+            background-color: $crust;
+            min-width: 80px;
+            min-height: 8px;
+            border-radius: 4px;
+        }
+        trough highlight {
+            background-color: $blue;
+            border-radius: 4px;
+        }
+    }
+}

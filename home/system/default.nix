@@ -29,7 +29,16 @@
     settings = {
       program_options = {
         udisks_version = 2;
+        file_manager = "nautilus";
+        terminal = "kitty -d";
       };
+    };
+  };
+
+  systemd.user.targets.tray = {
+    Unit = {
+      Description = "Tray target";
+      Requires = [ "graphical-session-pre.target" ];
     };
   };
 

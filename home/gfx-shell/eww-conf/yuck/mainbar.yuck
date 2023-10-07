@@ -10,7 +10,7 @@
     (box :orientation "h"
          :halign "end"
          :space-evenly false
-      (audioIndicator)
+      (audio)
       (clock)
     )
   )
@@ -47,14 +47,53 @@
   )
 )
 
-(defwidget audioIndicator []
-  (button :onclick {audio_open ? "scripts/audio close" : "scripts/audio open"}
-    (box :class `${audio_open ? "audioindicator open" : "audioindicator"}`
-         :space-evenly false
-      (label :class `${audio.speaker.mute ? "speaker mute" : "speaker"}`
-             :text `${audio.speaker.mute ? "󰟎" : "󰋋"}`)
-      (label :class `${audio.microphone.mute ? "microphone mute" : "microphone"}`
-             :text `${audio.microphone.mute ? "󰍭" : "󰍬"}`)
+(defwidget volumebar [value onchange]
+  (box :orientation "h"
+       :class "volumebar"
+       :space-evenly false
+    (scale :class "volume"
+           :min 0
+           :max 101
+           :value value
+           :flipped true
+           :onchange onchange
+           :orientation "h")
+  )
+)
+
+(defwidget audio []
+  (box :orientation "h"
+       :class "container audio"
+       :space-evenly false
+    ; Speaker element
+    (eventbox :onhover "eww update speaker=true"
+              :onhoverlost "eww update speaker=false"
+      (box :orientation "h"
+           :space-evenly false
+        (revealer :reveal {speaker}
+                  :transition "slideleft"
+                  :duration "500ms"
+          (volumebar :value `${audio.speaker.volume * 100.0}`
+                     :onchange "wpctl set-volume @DEFAULT_AUDIO_SINK@ {}%")
+        )
+        (label :class `${audio.speaker.mute ? "icon speaker mute" : "icon speaker"}`
+               :text `${audio.speaker.mute ? "󰟎" : "󰋋"}`)
+      )
+    )
+    ; Microphone element
+    (eventbox :onhover "eww update microphone=true"
+              :onhoverlost "eww update microphone=false"
+      (box :orientation "h"
+           :space-evenly false
+        (revealer :reveal {microphone}
+                  :transition "slideleft"
+                  :duration "500ms"
+          (volumebar :value `${audio.microphone.volume * 100.0}`
+                     :onchange "wpctl set-volume @DEFAULT_AUDIO_SOURCE@ {}%")
+        )
+        (label :class `${audio.microphone.mute ? "icon microphone mute" : "icon microphone"}`
+               :text `${audio.microphone.mute ? "󰍭" : "󰍬"}`)
+      )
     )
   )
 )

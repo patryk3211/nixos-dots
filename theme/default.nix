@@ -14,7 +14,7 @@
 
     gtk = {
       package = pkgs.catppuccin-gtk;
-      name = "Catppuccin-Frappe-Standard-Blue-dark";
+      name = "Catppuccin-Frappe-Standard-Blue-Dark";
     };
 
     qt = {

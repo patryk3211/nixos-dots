@@ -21,5 +21,7 @@ in {
     gwe
 
     ffmpeg
+    jetbrains.idea-community
+    blockbench-electron
   ];
 }

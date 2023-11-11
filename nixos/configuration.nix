@@ -100,6 +100,7 @@
   environment.systemPackages = with pkgs; [
     neovim
     wget
+    xorg.libXext
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

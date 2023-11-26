@@ -79,11 +79,23 @@
     # exec ${nvCfg}
   '';
 in {
-
   systemd.services."nvidia-x" = {
     script = ''
       ${pkgs.xorg.xinit}/bin/xinit ${pkgs.bash}/bin/bash ${xinitSrc} -- ${xExec} :${toString display} vt7 -novtswitch -nolisten tcp -config ${xorgConf}
     '';
   };
 
+  services.xserver = {
+    enable = true;
+    deviceSection = ''
+      Option "Coolbits" "28"
+    '';
+    display = 5;
+    windowManager = {
+      twm.enable = true;
+    };
+    displayManager = {
+      startx.enable = true;
+    };
+  };
 }

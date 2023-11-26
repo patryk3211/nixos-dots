@@ -65,23 +65,16 @@ in {
     nvidia-vaapi-driver
   ];
 
-  services.xserver = {
-    enable = true;
-    # This is just for Hyprland to work
-    # Xserver is configured elsewhere for nvidia-settings to work
-    videoDrivers = [ "nvidia" /*"modesetting" "fbcon"*/ ];
-    deviceSection = ''
-      Option "Coolbits" "28"
-    '';
-  };
+  # This is needed for Hyprland to work
+  services.xserver.videoDrivers = [ "nvidia" ];
 
-  hardware.opengl.extraPackages = [ pkgs.vaapiVdpau ];
+  hardware.opengl.extraPackages = with pkgs; [ vaapiVdpau ];
 
   hardware.nvidia = {
     modesetting.enable = true;
 
     open = false;
-    nvidiaSettings = true;
+    nvidiaSettings = false;
 
     package = config.boot.kernelPackages.nvidiaPackages.stable;
   };

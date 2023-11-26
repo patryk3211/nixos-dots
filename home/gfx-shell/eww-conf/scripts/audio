@@ -51,7 +51,7 @@ MIC_VOLUME=1
 SPEAKER_MUTED="false"
 SPEAKER_VOLUME=1
 
-pw-dump -m | jaq -cr | while read -er; do
+pw-dump -m | jaq -cr '.' | while read -er; do
     NEW_SOURCE=$(echo $REPLY | get_default_source)
     if [[ -n "$NEW_SOURCE" ]]; then
         DEFAULT_SOURCE=$NEW_SOURCE
@@ -84,6 +84,6 @@ pw-dump -m | jaq -cr | while read -er; do
         "mute": %s,
         "volume": %s
       }
-    }\n' $MIC_MUTED $MIC_VOLUME $SPEAKER_MUTED $SPEAKER_VOLUME | jaq -c
+    }\n' $MIC_MUTED $MIC_VOLUME $SPEAKER_MUTED $SPEAKER_VOLUME | jaq -c '.'
 done
 

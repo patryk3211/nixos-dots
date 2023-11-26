@@ -9,7 +9,7 @@
     userEmail = "patrykmierzy@gmail.com";
 
     extraConfig.credential = {
-      helper = "${pkgs.git.override { withLibsecret = true; }}/bin/git-credential-libsecret";
+      helper = "${pkgs.gitFull/* .override { withLibsecret = true; } */}/bin/git-credential-libsecret";
     };
   };
 }

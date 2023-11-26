@@ -3,11 +3,9 @@ let
   swaylockBin = "${config.programs.swaylock.package}/bin/swaylock";
   hyprctlBin = "${config.wayland.windowManager.hyprland.package}/bin/hyprctl";
 
-  idleTimeout = 60 * 5;
+  screenOffTimeout = 60 * 5;
+  lockTimeout = 60 * 10;
 in {
-  home.packages = with pkgs; [
-  ];
-
   services.swayidle = {
     enable = true;
     systemdTarget = "hyprland-session.target";
@@ -18,8 +16,9 @@ in {
     ];
 
     timeouts = [
-      { timeout = idleTimeout; command = "${swaylockBin} -f"; }
-      { timeout = idleTimeout + 1; command = "${hyprctlBin} dispatch dpms off"; resumeCommand = "${hyprctlBin} dispatch dpms on"; }
+      { timeout = screenOffTimeout; command = "${hyprctlBin} dispatch dpms off"; resumeCommand = "${hyprctlBin} dispatch dpms on"; }
+      # { timeout = lockTimeout; command = "${swaylockBin} -f"; }
+      # { timeout = lockTimeout + 3; command = "${hyprctlBin} dispatch dpms off"; resumeCommand = "${hyprctlBin} dispatch dpms on"; }
     ];
   };
 }

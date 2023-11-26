@@ -4,7 +4,7 @@
   imports = [
     ./hardware-configuration.nix
     ./wm.nix
-    ./nvidiax.nix
+    # ./nvidiax.nix
   ];
 
   boot = {
@@ -13,16 +13,6 @@
     tmp = {
       useTmpfs = true;
       tmpfsSize = "75%";
-    };
-  };
-
-  services.xserver = {
-    display = 5;
-    windowManager = {
-      twm.enable = true;
-    };
-    displayManager = {
-      startx.enable = true;
     };
   };
 }

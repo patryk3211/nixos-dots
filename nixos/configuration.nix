@@ -9,6 +9,7 @@
     ./user.nix
     ./greetd.nix
     ./gnome.nix
+    ./nixld.nix
   ];
 
   nix = {
@@ -100,7 +101,7 @@
   environment.systemPackages = with pkgs; [
     neovim
     wget
-    xorg.libXext
+    lxqt.lxqt-policykit
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -129,8 +130,6 @@
     driSupport = true;
     driSupport32Bit = true;
   };
-
-  programs.nix-ld.enable = true;
 
   security.pam.services.swaylock = {};
 

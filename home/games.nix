@@ -4,6 +4,6 @@
   home.packages = with pkgs; [
     prismlauncher
     steam
-    gamescope
+    # gamescope
   ];
 }

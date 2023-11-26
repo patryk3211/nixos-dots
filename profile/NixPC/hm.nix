@@ -11,7 +11,7 @@
     ./wm.nix
   ];
 
-  home.file.".xinitrc".text = ''
-    exec twm
-  '';
+  # home.file.".xinitrc".text = ''
+  #   exec twm
+  # '';
 }

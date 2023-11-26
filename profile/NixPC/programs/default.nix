@@ -18,7 +18,7 @@ in {
     wine
     #wineWowPackages.waylandFull
 
-    gwe
+    # gwe
 
     ffmpeg
     jetbrains.idea-community

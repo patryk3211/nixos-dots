@@ -1,6 +1,6 @@
 (defvar calendar_open false)
 (defvar calendar_expanded false)
-(defvar audio_open false)
+;; (defvar audio_open false)
 
 (defvar speaker false)
 (defvar microphone false)

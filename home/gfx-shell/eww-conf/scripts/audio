@@ -1,18 +1,18 @@
 #!/usr/bin/env bash
 
-if [[ -n "$1" ]]; then
-    case "$1" in
-        o|open)
-            eww open audio
-            eww update audio_open=true
-            ;;
-        c|close)
-            eww close audio
-            eww update audio_open=false
-            ;;
-    esac
-    exit
-fi
+# if [[ -n "$1" ]]; then
+#     case "$1" in
+#         o|open)
+#             eww open audio
+#             eww update audio_open=true
+#             ;;
+#         c|close)
+#             eww close audio
+#             eww update audio_open=false
+#             ;;
+#     esac
+#     exit
+# fi
 
 get_default_source() {
     jaq '.[] |
@@ -85,5 +85,7 @@ pw-dump -m | jaq -cr '.' | while read -er; do
         "volume": %s
       }
     }\n' $MIC_MUTED $MIC_VOLUME $SPEAKER_MUTED $SPEAKER_VOLUME | jaq -c '.'
+
+    sleep 0.1
 done
 

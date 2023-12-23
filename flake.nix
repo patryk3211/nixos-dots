@@ -39,8 +39,24 @@
               rust-overlay,
               nix-gaming,
               ... }: let
+    lib = nixpkgs.lib;
     system = "x86_64-linux";
     userMod = import ./user.nix { };
+
+    pkgs = (import nixpkgs {
+      inherit system;
+      overlays = [
+        rust-overlay.overlays.default
+        eww.overlays.default
+        (final: prev: {
+          neovim = nvim.packages.x86_64-linux.default;
+          steam = prev.steam.override {
+            extraProfile = "export STEAM_EXTRA_COMPAT_TOOLS_PATHS='${nix-gaming.packages.${prev.system}.proton-ge}'";
+          };
+          wine = nix-gaming.packages.${prev.system}.wine-ge;
+        })
+      ];
+    });
 
     globalConf = [
       ./user.nix
@@ -48,7 +64,7 @@
       ./theme
     ];
   in {
-    nixosConfigurations.${userMod.profile.hostname} = nixpkgs.lib.nixosSystem {
+    nixosConfigurations.${userMod.profile.hostname} = lib.nixosSystem {
       inherit system;
 
       modules = globalConf ++ [
@@ -59,19 +75,42 @@
       ];
     };
 
-    homeConfigurations."${userMod.profile.username}@${userMod.profile.hostname}" = home-manager.lib.homeManagerConfiguration {
-      pkgs = (import nixpkgs { inherit system; overlays = [
-        rust-overlay.overlays.default
-        eww.overlays.default
-        (final: prev: {
-          neovim = nvim.packages.x86_64-linux.default;
-          steam = prev.steam.override {
-            extraProfile = "export STEAM_EXTRA_COMPAT_TOOLS_PATHS='${nix-gaming.packages.${prev.system}.proton-ge}'";
-          };
-          wine = nix-gaming.packages.${prev.system}.wine-ge;
-        })
-      ]; });
+    devShells.${system} = {
+      eww = pkgs.mkShell {
+        shellHook = ''
+          # Initialize the eww development environment
+          echo "Preparing development environment"
 
+          WINDOWS=$(eww active-windows | grep -E '^[a-zA-Z]+' -o)
+
+          systemctl --user stop eww.service
+          mv -v ~/.config/eww ~/.config/eww.dir
+          ln -vs $(realpath home/gfx-shell/eww-conf) ~/.config/eww
+          systemctl --user start eww.service
+
+          for wid in $WINDOWS; do
+            eww open $wid
+          done
+
+          zsh
+
+          # Finalize the environment
+          systemctl --user stop eww.service
+          rm -v ~/.config/eww
+          mv -v ~/.config/eww.dir ~/.config/eww
+          systemctl --user start eww.service
+
+          for wid in $WINDOWS; do
+            eww open $wid
+          done
+
+          exit
+        '';
+      };
+    };
+
+    homeConfigurations."${userMod.profile.username}@${userMod.profile.hostname}" = home-manager.lib.homeManagerConfiguration {
+      inherit pkgs;
       modules = globalConf ++ [
         hyprland.homeManagerModules.default
         { imports = [

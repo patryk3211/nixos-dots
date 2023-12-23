@@ -1,15 +1,28 @@
-.workspaces {
-    margin-left: 10px;
-}
+$elementBorderRadius: 12px;
+// 38px - 3px * 2 = 32px = height of elements in mainbar
+$elementHeight: 32px;
 
 .mainbar-root {
+    background-color: rgba($mantle, 0.75);
+    padding: 3px 6px;
+}
+
+.container {
+    padding: 0 6px;
+    border-radius: $elementBorderRadius;
     background-color: $base;
-    margin: 0 6px;
-    border-radius: 5px;
+    margin-right: 4px;
+}
+
+.container:last-child {
+    margin-right: 0px;
+}
+
+.workspaces {
+    margin: 0 4px 0 10px;
 }
 
 .ws-button {
-    background-color: $base;
     border: $surface2 solid 1.5px;
     border-radius: 50%;
 
@@ -17,7 +30,6 @@
 }
 
 .ws-button > box {
-    background-color: $base;
     border-radius: 50%;
     margin: 2px;
 }
@@ -35,33 +47,25 @@
 }
 
 .clock {
-    margin-right: 8px;
     color: $overlay1;
+    padding: 0 8px;
 }
 
 .clock .time {
-    font-size: 17px;
+    font-size: 16px;
 }
 
 .mainmenu {
     font-family: "FiraCode Nerd Font";
     font-size: 22px;
-    margin: 0 6px;
+    margin-right: 6px;
     color: $lavender;
-}
-
-.container {
-    margin-right: 10px;
-    padding: 4px;
-    background-color: $mantle;
-    border-radius: 8px;
-    border-width: 0px 1px;
-    border-style: solid;
-    border-color: $surface0;
 }
 
 .audio {
     font-size: 16px;
+    margin-top: 1px;
+    margin-bottom: 1px;
 }
 
 .audio .mute {
@@ -95,14 +99,12 @@
 }
 
 .playerstatus {
-    background-color: $mantle;
-    border-radius: 100px;
-    padding-right: 10px;
+    padding: 0 8px 0 0;
 }
 
 .playerstatus .separator {
     background-color: $text;
-    border-radius: 100%;
+    border-radius: 50%;
     margin: 15px 5px 13px 5px;
     min-width: 4px;
 }
@@ -112,9 +114,9 @@
     background-size: cover;
     background-repeat: no-repeat;
 
-    min-width: 32px;
+    min-width: $elementHeight;
 
-    border-radius: 50%;
+    border-radius: $elementBorderRadius;
     margin-right: 6px;
 }
 

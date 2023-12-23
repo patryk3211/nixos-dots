@@ -85,5 +85,6 @@
     "cudatoolkit"
     "nvidia-x11"
     "nvidia-settings"
+    "cuda_nvcc"
   ];
 }

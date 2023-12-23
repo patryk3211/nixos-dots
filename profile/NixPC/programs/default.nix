@@ -13,15 +13,13 @@ in {
     helvum
     easyeffects
 
-    # wineWowPackages.stable
     winetricks
     wine
-    #wineWowPackages.waylandFull
-
-    # gwe
 
     ffmpeg
     jetbrains.idea-community
-    blockbench-electron
+    # blockbench-electron
+
+    digikam
   ];
 }

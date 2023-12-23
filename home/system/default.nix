@@ -5,7 +5,7 @@
     config.theme.icon.package
 
     libsecret
-    # udiskie
+    udiskie
   ];
 
   home.pointerCursor = {
@@ -36,12 +36,12 @@
     };
   };
 
-  systemd.user.targets.tray = {
-    Unit = {
-      Description = "Tray target";
-      Requires = [ "graphical-session-pre.target" ];
-    };
-  };
+  # systemd.user.targets.tray = {
+  #   Unit = {
+  #     Description = "Tray target";
+  #     Requires = [ "graphical-session-pre.target" ];
+  #   };
+  # };
 
   imports = [
     ./gtk.nix

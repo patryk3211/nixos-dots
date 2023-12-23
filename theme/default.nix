@@ -14,6 +14,10 @@
 
     gtk = {
       package = pkgs.catppuccin-gtk;
+      # package = pkgs.catppuccin-gtk.override {
+      #   accents = [ "blue" ];
+      #   variant = "frappe";
+      # };
       name = "Catppuccin-Frappe-Standard-Blue-Dark";
     };
 

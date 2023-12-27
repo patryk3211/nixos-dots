@@ -92,7 +92,9 @@
             eww open $wid
           done
 
+          echo "Entered eww development mode"
           zsh
+          echo "Leaving eww development mode"
 
           # Finalize the environment
           systemctl --user stop eww.service

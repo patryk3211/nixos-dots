@@ -1,0 +1,19 @@
+(defwidget appbar []
+  (box :class "appbar-root"
+    "Text"
+    ;; (box :class "appbar-container"
+    ;; )
+  )
+)
+
+(defwindow appbar
+    :monitor 0
+    :stacking "fg"
+    :geometry (geometry :x "0px"
+                        :y "0px"
+                        :width "100%"
+                        :height "64px"
+                        :anchor "bottom center")
+  (appbar)
+)
+

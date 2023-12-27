@@ -1,3 +1,6 @@
+(defvar speaker false)
+(defvar microphone false)
+
 (defwidget mainbar []
   (centerbox :class "mainbar-root"
     (box :halign "start"
@@ -15,8 +18,10 @@
     (box :orientation "h"
          :halign "end"
          :space-evenly false
-      (audio)
-      (clock)
+         :class "separatedelements"
+      (box (gamemode))
+      (box (audio))
+      (box (clock))
     )
   )
 )
@@ -115,6 +120,16 @@
            ;; :text "·")
     (label :class "artist"
            :text `${music.artist}`)
+  )
+)
+
+(defwidget gamemode []
+  (revealer :reveal {game_mode}
+    (box :class "container gamemode"
+      (label
+        :text ""
+      )
+    )
   )
 )
 

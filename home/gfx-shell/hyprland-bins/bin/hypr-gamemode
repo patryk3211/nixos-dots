@@ -1,0 +1,43 @@
+#!/usr/bin/env bash
+
+# Game mode is detected when animations are off
+# (probably not the best way to do this)
+
+current_mode() {
+  hyprctl getoption animations:enabled | rg '\s*int:\s*(\d+)' -r '$1'
+}
+
+mode_enable() {
+  hyprctl keyword animations:enabled 0
+  hyprctl keyword decoration:blur:enabled 0
+  hyprctl keyword decoration:rounding 0
+  hyprctl keyword decoration:drop_shadow 0
+  hyprctl keyword general:allow_tearing 1
+  eww update game_mode=true
+}
+
+mode_disable() {
+  hyprctl keyword animations:enabled 1
+  hyprctl keyword decoration:blur:enabled 1
+  hyprctl keyword decoration:rounding 8
+  hyprctl keyword decoration:drop_shadow 1
+  hyprctl keyword general:allow_tearing 0
+  eww update game_mode=false
+}
+
+case $1 in
+  t|toggle)
+    if [[ "$(current_mode)" -eq '1' ]]; then
+      mode_enable
+    else
+      mode_disable
+    fi
+    ;;
+  e|enable)
+    mode_enable
+    ;;
+  d|disable)
+    mode_disable
+    ;;
+esac
+

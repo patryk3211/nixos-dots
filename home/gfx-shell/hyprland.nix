@@ -113,6 +113,7 @@ with lib;
         { modifiers = []; key = "escape"; dispatcher = "submap"; arg = "reset"; submap = "move"; }
 
       { modifiers = [ "$mod" "ALT" ]; key = "M"; arg = "hypr-mousemode toggle"; }
+      { modifiers = [ "$mod" "ALT" ]; key = "G"; arg = "hypr-gamemode toggle"; }
 
       # Media keys
       { bindType = "l"; modifiers = []; key = "XF86AudioPlay"; arg = "playerctl play-pause"; }
@@ -130,8 +131,9 @@ with lib;
       
       { rule = "workspace 4 silent"; target = "firefox"; }
       { rule = "workspace 6 silent"; target = "discord"; }
+      { rule = "workspace 6 silent"; target = "WebCord"; }
       { rule = "workspace 8 silent"; target = "thunderbird"; }
-      # { rule = "workspace 9 silent"; target = "class:(org\.keepassxc\.KeePassXC),floating:0"; v2 = true; }
+      { rule = "workspace 9 silent"; target = "class:(org\.keepassxc\.KeePassXC),floating:0"; v2 = true; }
 
       { rule = "noinitialfocus"; target = "discord"; }
       { rule = "noinitialfocus"; target = "firefox"; }
@@ -175,7 +177,9 @@ with lib;
 
       misc {
         vrr = 1
-        vfr = false
+        vfr = true
+        mouse_move_enables_dpms = true
+        key_press_enables_dpms = true
       }
     '';
   };

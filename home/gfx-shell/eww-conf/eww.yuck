@@ -3,4 +3,5 @@
 ; Include widgets
 (include "yuck/mainbar.yuck")
 (include "yuck/calendar.yuck")
+(include "yuck/appbar.yuck")
 

@@ -102,6 +102,8 @@
     neovim
     wget
     lxqt.lxqt-policykit
+    openvpn
+    networkmanager-openvpn
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

@@ -11,11 +11,14 @@ $elementHeight: 32px;
     padding: 0 6px;
     border-radius: $elementBorderRadius;
     background-color: $base;
+}
+
+.separatedelements > * {
     margin-right: 4px;
 }
 
-.container:last-child {
-    margin-right: 0px;
+.separatedelements > *:last-child {
+    margin-right: 0;
 }
 
 .workspaces {
@@ -118,5 +121,18 @@ $elementHeight: 32px;
 
     border-radius: $elementBorderRadius;
     margin-right: 6px;
+}
+
+.gamemode {
+    margin-top: 3px;
+    margin-bottom: 3px;
+}
+
+.gamemode > label {
+    font-size: 15px;
+    min-width: 15px;
+    margin-top: 1px;
+    margin-left: -3px;
+    margin-right: 4px;
 }
 

@@ -16,6 +16,7 @@ let
     wireplumber
     kalker
     playerctl
+    coreutils-full
   ];
 in {
   options.patmods.eww = {
@@ -58,6 +59,37 @@ in {
       recursive = true;
       #onChange = "systemctl --user restart eww.service"
     };
+
+    xdg.configFile."eww/generated/yuck/help.yuck".text = with lib; let
+      alternativeKeys = {
+        "$mod" = " ";
+        "mouse:272" = "Left Mouse";
+        "mouse:273" = "Right Mouse";
+        "XF86AudioPlay" = "Media Play";
+        "XF86AudioPrev" = "Media Previous";
+        "XF86AudioNext" = "Media Next";
+        "XF86AudioRaiseVolume" = "Media Volume Up";
+        "XF86AudioLowerVolume" = "Media Volume Down";
+        "XF86AudioMute" = "Media Mute";
+      };
+    in ''
+      ; Generated in 'home/gfx-shell/modules/eww.nix'
+      (defwidget generatedKeybinds []
+        (box :orientation "v"
+      ${concatStringsSep "\n" (attrsets.mapAttrsToList (n: v:
+          concatStringsSep "\n" (map (bind:
+            ''(box :class "entry"
+                   :space-evenly false
+                (label :xalign "0" :class "modkeys" :text "${concatStringsSep " " (map (v: alternativeKeys.${v} or v) bind.modifiers)}")
+                (label :xalign "0" :class "mainkey" :text "${alternativeKeys.${bind.key} or bind.key}")
+                (label :xalign "0" :class "submap" :text "${if isNull bind.submap then "" else bind.submap}")
+                (label :hexpand true :xalign "0" :class "description" :text "${bind.help}")
+              )''
+          ) v)
+      ) (lists.groupBy (v: if v.submap == null then "reset" else v.submap) config.patmods.hyprland.binds))}
+        )
+      )
+    '';
     
     systemd.user.services.eww = {
       Unit = {

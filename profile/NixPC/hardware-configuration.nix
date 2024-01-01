@@ -14,9 +14,13 @@ in {
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
   boot.supportedFilesystems = [ "ntfs" ];
+  boot.kernelParams = [ "nvidia_drm.fbdev=1" ];
 
   boot.loader = {
-    systemd-boot.enable = lib.mkForce true;
+    systemd-boot = {
+      enable = lib.mkForce true;
+      consoleMode = "max";
+    };
     efi.canTouchEfiVariables = true;
   };
 

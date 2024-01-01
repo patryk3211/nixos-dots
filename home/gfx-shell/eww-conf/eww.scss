@@ -1,4 +1,4 @@
-@import 'css/colors';
+@import 'generated/css/colors';
 
 * {
     all: unset;
@@ -10,4 +10,5 @@
 @import 'css/mainbar';
 @import 'css/calendar';
 @import 'css/appbar';
+@import 'css/keybinds';
 

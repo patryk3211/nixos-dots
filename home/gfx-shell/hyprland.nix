@@ -31,58 +31,60 @@ with lib;
     ];
 
     binds = [
-      { modifiers = [ "$mod" "SHIFT" ]; key = "E"; arg = "loginctl terminate-user 1000"; }
+      { modifiers = [ "$mod" "SHIFT" ]; key = "E"; arg = "loginctl terminate-user 1000"; help = "Logout"; }
       # Hyprland actions
-      { key = "Q"; dispatcher = "killactive"; }
-      { key = "F"; dispatcher = "fullscreen"; }
-      { modifiers = [ "$mod" "SHIFT" ]; key = "F"; dispatcher = "fullscreen"; arg = "1"; }
-      { key = "T"; dispatcher = "togglefloating"; }
+      { key = "Q"; dispatcher = "killactive"; help = "Close current window"; }
+      { key = "F"; dispatcher = "fullscreen"; arg = "1"; help = "Toggle current window semi-fullscreen"; }
+      { modifiers = [ "$mod" "SHIFT" ]; key = "F"; dispatcher = "fullscreen"; help = "Toggle current window fullscreen"; }
+      { key = "T"; dispatcher = "togglefloating"; help = "Toggle current window floating"; }
 
       # Launch programs
-      { modifiers = [ "$mod" "SHIFT" ]; key = "T"; arg = "kitty"; }
-      { key = "N"; arg = "pkill rofi || rofi-launcher"; }
-      { key = "R"; arg = "pkill rofi || rofi-runner"; }
-      { modifiers = []; key = "PRINT"; arg = "pkill rofi || rofi-screenshot"; }
-      { key = "C"; arg = "pkill rofi || rofi-kalker"; }
+      { modifiers = [ "$mod" "SHIFT" ]; key = "T"; arg = "kitty"; help = "Spawn new terminal"; }
+      { key = "N"; arg = "pkill rofi || rofi-launcher"; help = "Open application launcher"; }
+      { key = "R"; arg = "pkill rofi || rofi-runner"; help = "Open runner"; }
+      { modifiers = []; key = "PRINT"; arg = "pkill rofi || rofi-screenshot"; help = "Take a screenshot"; }
+      { key = "C"; arg = "pkill rofi || rofi-kalker"; help = "Open quick calculator"; }
 
-      { modifiers = [ "$mod" "SHIFT" ]; key = "C"; arg = "kitty kalker"; }
+      { modifiers = [ "$mod" "SHIFT" ]; key = "C"; arg = "kitty kalker"; help = "Open kalker"; }
+      
+      { modifiers = [ "$mod" "SHIFT" ]; key = "H"; arg = "eww open keybinds"; help = "Open this keybind viewer"; }
 
       # Focus moving
-      { key = "up"; dispatcher = "movefocus"; arg = "u"; }
-      { key = "down"; dispatcher = "movefocus"; arg = "d"; }
-      { key = "left"; dispatcher = "movefocus"; arg = "l"; }
-      { key = "right"; dispatcher = "movefocus"; arg = "r"; }
+      { key = "up"; dispatcher = "movefocus"; arg = "u"; help = "Move focus up"; }
+      { key = "down"; dispatcher = "movefocus"; arg = "d"; help = "Move focus down"; }
+      { key = "left"; dispatcher = "movefocus"; arg = "l"; help = "Move focus left"; }
+      { key = "right"; dispatcher = "movefocus"; arg = "r";  help = "Move focus right"; }
 
       # Mouse actions
-      { bindType = "m"; key = "mouse:272"; dispatcher = "movewindow"; }
-      { bindType = "m"; key = "mouse:273"; dispatcher = "resizewindow"; }
+      { bindType = "m"; key = "mouse:272"; dispatcher = "movewindow"; help = "Move window"; }
+      { bindType = "m"; key = "mouse:273"; dispatcher = "resizewindow"; help = "Resize window"; }
 
       # Workspaces
-      { key = "1"; dispatcher = "workspace"; arg = "1"; }
-      { key = "2"; dispatcher = "workspace"; arg = "2"; }
-      { key = "3"; dispatcher = "workspace"; arg = "3"; }
-      { key = "4"; dispatcher = "workspace"; arg = "4"; }
-      { key = "5"; dispatcher = "workspace"; arg = "5"; }
-      { key = "6"; dispatcher = "workspace"; arg = "6"; }
-      { key = "7"; dispatcher = "workspace"; arg = "7"; }
-      { key = "8"; dispatcher = "workspace"; arg = "8"; }
-      { key = "9"; dispatcher = "workspace"; arg = "9"; }
+      { key = "1"; dispatcher = "workspace"; arg = "1"; help = "Switch to workspace 1"; }
+      { key = "2"; dispatcher = "workspace"; arg = "2"; help = "Switch to workspace 2"; }
+      { key = "3"; dispatcher = "workspace"; arg = "3"; help = "Switch to workspace 3"; }
+      { key = "4"; dispatcher = "workspace"; arg = "4"; help = "Switch to workspace 4"; }
+      { key = "5"; dispatcher = "workspace"; arg = "5"; help = "Switch to workspace 5"; }
+      { key = "6"; dispatcher = "workspace"; arg = "6"; help = "Switch to workspace 6"; }
+      { key = "7"; dispatcher = "workspace"; arg = "7"; help = "Switch to workspace 7"; }
+      { key = "8"; dispatcher = "workspace"; arg = "8"; help = "Switch to workspace 8"; }
+      { key = "9"; dispatcher = "workspace"; arg = "9"; help = "Switch to workspace 9"; }
 
-      { modifiers = [ "$mod" "SHIFT" ]; key = "1"; dispatcher = "movetoworkspace"; arg = "1"; }
-      { modifiers = [ "$mod" "SHIFT" ]; key = "2"; dispatcher = "movetoworkspace"; arg = "2"; }
-      { modifiers = [ "$mod" "SHIFT" ]; key = "3"; dispatcher = "movetoworkspace"; arg = "3"; }
-      { modifiers = [ "$mod" "SHIFT" ]; key = "4"; dispatcher = "movetoworkspace"; arg = "4"; }
-      { modifiers = [ "$mod" "SHIFT" ]; key = "5"; dispatcher = "movetoworkspace"; arg = "5"; }
-      { modifiers = [ "$mod" "SHIFT" ]; key = "6"; dispatcher = "movetoworkspace"; arg = "6"; }
-      { modifiers = [ "$mod" "SHIFT" ]; key = "7"; dispatcher = "movetoworkspace"; arg = "7"; }
-      { modifiers = [ "$mod" "SHIFT" ]; key = "8"; dispatcher = "movetoworkspace"; arg = "8"; }
-      { modifiers = [ "$mod" "SHIFT" ]; key = "9"; dispatcher = "movetoworkspace"; arg = "9"; }
+      { modifiers = [ "$mod" "SHIFT" ]; key = "1"; dispatcher = "movetoworkspace"; arg = "1"; help = "Move current window to workspace 1"; }
+      { modifiers = [ "$mod" "SHIFT" ]; key = "2"; dispatcher = "movetoworkspace"; arg = "2"; help = "Move current window to workspace 2"; }
+      { modifiers = [ "$mod" "SHIFT" ]; key = "3"; dispatcher = "movetoworkspace"; arg = "3"; help = "Move current window to workspace 3"; }
+      { modifiers = [ "$mod" "SHIFT" ]; key = "4"; dispatcher = "movetoworkspace"; arg = "4"; help = "Move current window to workspace 4"; }
+      { modifiers = [ "$mod" "SHIFT" ]; key = "5"; dispatcher = "movetoworkspace"; arg = "5"; help = "Move current window to workspace 5"; }
+      { modifiers = [ "$mod" "SHIFT" ]; key = "6"; dispatcher = "movetoworkspace"; arg = "6"; help = "Move current window to workspace 6"; }
+      { modifiers = [ "$mod" "SHIFT" ]; key = "7"; dispatcher = "movetoworkspace"; arg = "7"; help = "Move current window to workspace 7"; }
+      { modifiers = [ "$mod" "SHIFT" ]; key = "8"; dispatcher = "movetoworkspace"; arg = "8"; help = "Move current window to workspace 8"; }
+      { modifiers = [ "$mod" "SHIFT" ]; key = "9"; dispatcher = "movetoworkspace"; arg = "9"; help = "Move current window to workspace 9"; }
 
-      { key = "bracketleft"; dispatcher = "workspace"; arg = "m-1"; }
-      { key = "bracketright"; dispatcher = "workspace"; arg = "m+1"; }
+      { key = "bracketleft"; dispatcher = "workspace"; arg = "m-1"; help = "Switch to previous workspace"; }
+      { key = "bracketright"; dispatcher = "workspace"; arg = "m+1"; help = "Switch to next workspace"; }
 
-      { modifiers = [ "$mod" "SHIFT" ]; key = "bracketleft"; dispatcher = "focusmonitor"; arg = "l"; }
-      { modifiers = [ "$mod" "SHIFT" ]; key = "bracketright"; dispatcher = "focusmonitor"; arg = "r"; }
+      { modifiers = [ "$mod" "SHIFT" ]; key = "bracketleft"; dispatcher = "focusmonitor"; arg = "l"; help = "Move focus to previous monitor"; }
+      { modifiers = [ "$mod" "SHIFT" ]; key = "bracketright"; dispatcher = "focusmonitor"; arg = "r"; help = "Move focus to next monitor"; }
 
       # Keyboard window resizing
       { modifiers = [ "$mod" "SHIFT" ]; key = "R"; dispatcher = "submap"; arg = "resize"; }
@@ -116,14 +118,14 @@ with lib;
       { modifiers = [ "$mod" "ALT" ]; key = "G"; arg = "hypr-gamemode toggle"; }
 
       # Media keys
-      { bindType = "l"; modifiers = []; key = "XF86AudioPlay"; arg = "playerctl play-pause"; }
-      { bindType = "l"; modifiers = []; key = "XF86AudioPrev"; arg = "playerctl previous"; }
-      { bindType = "l"; modifiers = []; key = "XF86AudioNext"; arg = "playerctl next"; }
-      { bindType = "e"; modifiers = []; key = "XF86AudioRaiseVolume"; arg = "wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 5%+"; }
-      { bindType = "e"; modifiers = []; key = "XF86AudioLowerVolume"; arg = "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"; }
-      { bindType = "l"; modifiers = []; key = "XF86AudioMute"; arg = "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"; }
+      { bindType = "l"; modifiers = []; key = "XF86AudioPlay"; arg = "playerctl play-pause"; help = "Play/pause current media player"; }
+      { bindType = "l"; modifiers = []; key = "XF86AudioPrev"; arg = "playerctl previous"; help = "Play previous media"; }
+      { bindType = "l"; modifiers = []; key = "XF86AudioNext"; arg = "playerctl next"; help = "Play next media"; }
+      { bindType = "e"; modifiers = []; key = "XF86AudioRaiseVolume"; arg = "wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 5%+"; help = "Raise volume by 5%"; }
+      { bindType = "e"; modifiers = []; key = "XF86AudioLowerVolume"; arg = "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"; help = "Lower volume by 5%"; }
+      { bindType = "l"; modifiers = []; key = "XF86AudioMute"; arg = "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"; help = "Toggle audio mute"; }
 
-      { bindType = "l"; key = "M"; arg = "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"; }
+      { bindType = "l"; key = "M"; arg = "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"; help = "Toggle microphone mute"; }
     ];
 
     rules = [
@@ -176,7 +178,7 @@ with lib;
       }
 
       misc {
-        vrr = 1
+        vrr = 2
         vfr = true
         mouse_move_enables_dpms = true
         key_press_enables_dpms = true

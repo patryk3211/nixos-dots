@@ -21,5 +21,7 @@ in {
     # blockbench-electron
 
     digikam
+
+    transmission_4-gtk
   ];
 }

@@ -1,0 +1,35 @@
+(include "generated/yuck/help.yuck")
+
+(defwidget keybinds []
+  (eventbox :onclick "eww close keybinds"
+    (box :class "keybinds-container"
+         :orientation "v"
+         :space-evenly false
+      (label :class "header" :text "Key binds")
+      (label :class "subheader" :text "  = Super Key")
+      (box :class "tableheader" :space-evenly false
+        (box :class "modkeys" "Modifiers")
+        (box :class "mainkey" "Key")
+        (box :class "submap" "Submap")
+        (box :class "description" "Description")
+      )
+      (scroll :hscroll false
+              :vscroll true
+              :vexpand true
+        (generatedKeybinds)
+      )
+    )
+  )
+)
+
+(defwindow keybinds
+    :monitor 0
+    :stacking "fg"
+    :exclusive false
+    :geometry (geometry :x "26%"
+                        :y "26%"
+		        :width "52%"
+		        :height "52%")
+  (keybinds)
+)
+

@@ -64,7 +64,10 @@ in {
   };
 
   config = mkIf cfg.enable {
-    xdg.configFile."eww/css/colors.scss".text = concatStrings (attrsets.mapAttrsToList(name: value: "\$${name}: ${value};\n") cfg.eww);
+    xdg.configFile."eww/generated/css/colors.scss".text = ''
+      // Generated in 'home/gfx-shell/modules/colors.nix'
+      ${concatStrings (attrsets.mapAttrsToList(name: value: "\$${name}: ${value};\n") cfg.eww)}
+    '';
   };
 }
 

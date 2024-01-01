@@ -81,11 +81,21 @@
           # Initialize the eww development environment
           echo "Preparing development environment"
 
+          if [[ -e '~/.config/eww.dir' ]]; then
+            echo "Eww development environment already active"
+            exit
+          fi
+
           WINDOWS=$(eww active-windows | grep -E '^[a-zA-Z]+' -o)
 
           systemctl --user stop eww.service
           mv -v ~/.config/eww ~/.config/eww.dir
-          ln -vs $(realpath home/gfx-shell/eww-conf) ~/.config/eww
+          mkdir ~/.config/eww
+          for f in $(ls home/gfx-shell/eww-conf); do
+            ln -vs $(realpath home/gfx-shell/eww-conf/$f) ~/.config/eww
+          done
+          ln -vs ~/.config/eww.dir/generated ~/.config/eww
+          # ln -vs $(realpath home/gfx-shell/eww-conf) ~/.config/eww
           systemctl --user start eww.service
 
           for wid in $WINDOWS; do
@@ -98,7 +108,7 @@
 
           # Finalize the environment
           systemctl --user stop eww.service
-          rm -v ~/.config/eww
+          rm -vr ~/.config/eww
           mv -v ~/.config/eww.dir ~/.config/eww
           systemctl --user start eww.service
 

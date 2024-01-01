@@ -5,3 +5,6 @@
 (include "yuck/calendar.yuck")
 (include "yuck/appbar.yuck")
 
+; Help widget (contains all keybinds)
+(include "yuck/help.yuck")
+

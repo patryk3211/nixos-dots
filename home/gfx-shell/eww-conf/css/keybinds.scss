@@ -1,0 +1,47 @@
+.keybinds-container {
+    background-color: rgba($base, 0.85);
+    padding: 12px;
+
+    margin: 6px;
+    box-shadow: 0 0 4px 0px #222;
+    border-radius: 8px;
+
+    .header {
+        font-size: 32px;
+        font-weight: bold;
+    }
+
+    .tableheader {
+        font-weight: bold;
+        border-bottom: 1px dashed $overlay1;
+    }
+
+    .entry > *, .tableheader > * {
+        margin-right: 4px;
+        border-right: 1px solid $overlay0;
+        padding: 0 4px;
+    }
+
+    .entry > *:last-child, .tableheader > *:last-child {
+        margin-right: 0px;
+        border-right: none;
+    }
+
+    .tableheader > * {
+        padding-bottom: 4px;
+    }
+
+    .modkeys {
+        min-width: 120px;
+    }
+    .mainkey {
+        min-width: 140px;
+    }
+    .submap {
+        min-width: 90px;
+    }
+    .description {
+        
+    }
+}
+

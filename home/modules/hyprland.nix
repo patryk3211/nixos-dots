@@ -33,6 +33,11 @@ let
         type = types.nullOr types.str;
         default = null;
       };
+
+      help = mkOption {
+        type = types.str;
+        default = "";
+      };
     };
   };
   

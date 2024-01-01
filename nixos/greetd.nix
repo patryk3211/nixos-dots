@@ -48,6 +48,15 @@ in {
     };
   };*/
 
+  systemd.services.disableDmesgToConsole = {
+    wantedBy = [ "multi-user.target" ];
+    description = "Disable DMesg logging to console";
+    serviceConfig = {
+      Type = "oneshot";
+      ExecStart = "${pkgs.util-linux}/bin/dmesg -D";
+    };
+  };
+
   services.greetd = {
     enable = true;
     settings = {

@@ -10,6 +10,7 @@
     ./greetd.nix
     ./gnome.nix
     ./nixld.nix
+    ./firewall.nix
   ];
 
   nix = {
@@ -41,7 +42,7 @@
 
   services.avahi = {
     enable = true;
-    nssmdns = true;
+    nssmdns4 = true;
     openFirewall = true;
   };
 
@@ -166,12 +167,6 @@
     mkdir -m 755 -p /bin
     ln -sfn ${pkgs.bash}/bin/bash /bin/bash
   '';
-
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
 
   # Copy the NixOS configuration file and link it from the resulting system
   # (/run/current-system/configuration.nix). This is useful in case you

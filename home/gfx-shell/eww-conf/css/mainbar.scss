@@ -136,3 +136,39 @@ $elementHeight: 32px;
     margin-right: 4px;
 }
 
+.indicator {
+  min-width: $elementHeight;
+  border-radius: $elementHeight / 2;
+  padding: 0;
+
+  .icon {
+    font-size: 18px;
+  }
+
+  .progress {
+    background-color: $crust;
+  }
+}
+
+.cpu {
+  .icon {
+    color: $green;
+  }
+  .progress {
+    color: $green;
+  }
+}
+
+.ram {
+  .icon {
+    color: $yellow;
+  }
+
+  .progress {
+    color: $yellow;
+  }
+}
+
+.indicator .progress.high {
+  color: $red;
+}

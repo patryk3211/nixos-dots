@@ -21,6 +21,8 @@
          :class "separatedelements"
       (box (gamemode))
       (box (audio))
+      (box (dial :icon "󰻠" :value {EWW_CPU.avg} :class "cpu"))
+      (box (dial :icon "󰍛" :value {EWW_RAM.used_mem_perc} :class "ram"))
       (box (clock))
     )
   )
@@ -120,6 +122,19 @@
            ;; :text "·")
     (label :class "artist"
            :text `${music.artist}`)
+  )
+)
+
+(defwidget dial [icon class value]
+  (box :class "container indicator ${class}"
+    (overlay
+      (circular-progress :class {value > 90 ? "progress high" : "progress"}
+                         :value {value}
+                         :thickness 4
+      )
+      (label :text {icon}
+             :class "icon")
+    )
   )
 )
 

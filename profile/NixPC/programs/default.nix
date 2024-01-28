@@ -23,5 +23,8 @@ in {
     digikam
 
     transmission_4-gtk
+    lunarvim
+    
+    kicad-small
   ];
 }

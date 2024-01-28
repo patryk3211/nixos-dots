@@ -71,6 +71,13 @@ in {
         "XF86AudioRaiseVolume" = "Media Volume Up";
         "XF86AudioLowerVolume" = "Media Volume Down";
         "XF86AudioMute" = "Media Mute";
+        "left" = "󰁍";
+        "right" = "󰁔";
+        "up" = "󰁝";
+        "down" = "󰁅";
+        "escape" = "Escape";
+        "bracketleft" = "[";
+        "bracketright" = "]";
       };
     in ''
       ; Generated in 'home/gfx-shell/modules/eww.nix'

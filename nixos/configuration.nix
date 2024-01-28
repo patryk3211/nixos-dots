@@ -11,6 +11,7 @@
     ./gnome.nix
     ./nixld.nix
     ./firewall.nix
+    ./polkit.nix
   ];
 
   nix = {
@@ -18,10 +19,8 @@
     extraOptions = ''
       experimental-features = nix-command flakes
     '';
-    settings.trusted-users = [ config.profile.username ];
   };
 
-  networking.hostName = config.profile.hostname;
   networking.networkmanager.enable = true;
 
   time.timeZone = "Europe/Warsaw";
@@ -44,37 +43,6 @@
     enable = true;
     nssmdns4 = true;
     openFirewall = true;
-  };
-
-  security.polkit = {
-    enable = true;
-    extraConfig = ''
-      polkit.addRule(function(action, subject) {
-        var YES = polkit.Result.YES;
-        var permission = {
-          // required for udisks1:
-          "org.freedesktop.udisks.filesystem-mount": YES,
-          "org.freedesktop.udisks.luks-unlock": YES,
-          "org.freedesktop.udisks.drive-eject": YES,
-          "org.freedesktop.udisks.drive-detach": YES,
-          // required for udisks2:
-          "org.freedesktop.udisks2.filesystem-mount": YES,
-          "org.freedesktop.udisks2.encrypted-unlock": YES,
-          "org.freedesktop.udisks2.eject-media": YES,
-          "org.freedesktop.udisks2.power-off-drive": YES,
-          // required for udisks2 if using udiskie from another seat (e.g. systemd):
-          "org.freedesktop.udisks2.filesystem-mount-other-seat": YES,
-          "org.freedesktop.udisks2.filesystem-unmount-others": YES,
-          "org.freedesktop.udisks2.encrypted-unlock-other-seat": YES,
-          "org.freedesktop.udisks2.encrypted-unlock-system": YES,
-          "org.freedesktop.udisks2.eject-media-other-seat": YES,
-          "org.freedesktop.udisks2.power-off-drive-other-seat": YES
-        };
-        if (subject.isInGroup("storage")) {
-          return permission[action.id];
-        }
-      });
-    '';
   };
 
   # Enable sound.
@@ -162,6 +130,8 @@
     enableNvidia = true;
     enableOnBoot = true;
   };
+
+  boot.kernel.sysctl."kernel.sysrq" = 1;
 
   system.activationScripts.binbash = ''
     mkdir -m 755 -p /bin

@@ -34,7 +34,7 @@ super: rec {
     nativeBuildInputs = [];
     propagatedBuildInputs = [
       Pillow
-      numpy
+      pkgs.python311Packages.numpy
       opencv-python
       pyserial
       shxparser
@@ -42,24 +42,24 @@ super: rec {
       pkgs.python311Packages.tkinter
     ];
   };
-  "numpy" = super.buildPythonPackage rec {
-    pname = "numpy";
-    version = "1.26.2";
-    src = fetchurl {
-      # url = "https://files.pythonhosted.org/packages/cf/7a/f68d1d658a0e68084097beb212fa9356fee7eabff8b57231cc4acb555b12/numpy-1.25.1.tar.gz";
-      url = "https://files.pythonhosted.org/packages/b6/ab/5b893944b1602a366893559bfb227fdfb3ad7c7629b2a80d039bb5924367/numpy-1.26.2-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl";
-      sha256 = "sha256-lspUgsPb3QUbzR/OgDRgPW6/wSWnvVn1W0DY9dJGgys=";
-      # sha256 = "9a3a9f3a61480cc086117b426a8bd86869c213fc4072e606f01c4e4b66eb92bf";
-    };
-    format = "wheel";
-    doCheck = false;
-    buildInputs = [];
-    checkInputs = [];
-    nativeBuildInputs = [];
-    propagatedBuildInputs = [
-      pkgs.python311Packages.cython
-    ];
-  };
+  # "numpy" = super.buildPythonPackage rec {
+  #   pname = "numpy";
+  #   version = "1.26.2";
+  #   src = fetchurl {
+  #     # url = "https://files.pythonhosted.org/packages/cf/7a/f68d1d658a0e68084097beb212fa9356fee7eabff8b57231cc4acb555b12/numpy-1.25.1.tar.gz";
+  #     url = "https://files.pythonhosted.org/packages/b6/ab/5b893944b1602a366893559bfb227fdfb3ad7c7629b2a80d039bb5924367/numpy-1.26.2-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl";
+  #     sha256 = "sha256-lspUgsPb3QUbzR/OgDRgPW6/wSWnvVn1W0DY9dJGgys=";
+  #     # sha256 = "9a3a9f3a61480cc086117b426a8bd86869c213fc4072e606f01c4e4b66eb92bf";
+  #   };
+  #   format = "wheel";
+  #   doCheck = false;
+  #   buildInputs = [];
+  #   checkInputs = [];
+  #   nativeBuildInputs = [];
+  #   propagatedBuildInputs = [
+  #     pkgs.python311Packages.cython
+  #   ];
+  # };
   "opencv-python" = super.buildPythonPackage rec {
     pname = "opencv-python";
     version = "4.5.5.62";
@@ -73,7 +73,7 @@ super: rec {
     checkInputs = [];
     nativeBuildInputs = [];
     propagatedBuildInputs = [
-      numpy
+      pkgs.python311Packages.numpy
     ];
   };
   "pyserial" = super.buildPythonPackage rec {

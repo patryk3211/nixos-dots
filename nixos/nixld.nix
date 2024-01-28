@@ -9,6 +9,7 @@
     libGL
     freetype
     fontconfig
+    libusb1
   ];
 in {
   programs.nix-ld = {
@@ -16,6 +17,6 @@ in {
     libraries = options.programs.nix-ld.libraries.default ++ libraries;
   };
   environment.sessionVariables = {
-    LD_LIBRARY_PATH="${lib.makeLibraryPath libraries}";
+    LD_LIBRARY_PATH="${lib.makeLibraryPath libraries}:/run/opengl-driver/lib:/run/opengl-driver-32/lib";
   };
 }

@@ -7,8 +7,11 @@
         LIBVA_DRIVER_NAME = "nvidia";
         GBM_SESSION_TYPE = "nvidia-drm";
         __GLX_VENDOR_LIBRARY_NAME = "nvidia";
+        __GL_VRR_ALLOWED = "1";
         WLR_NO_HARDWARE_CURSORS = "1";
+        WLR_DRM_NO_ATOMIC = "1";
         SDL_VIDEODRIVER = "x11";
+        GALLIUM_DRIVER = "nvidia";
       };
 
       monitors = {

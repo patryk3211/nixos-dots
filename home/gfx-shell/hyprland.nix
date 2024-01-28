@@ -140,6 +140,8 @@ with lib;
       { rule = "noinitialfocus"; target = "discord"; }
       { rule = "noinitialfocus"; target = "firefox"; }
 
+      { rule = "idleinhibit focus"; target = "firefox"; }
+
       { rule = "idleinhibit focus"; target = "steam_app.*"; }
       { rule = "fullscreen"; target = "steam_app_1511460"; }
 
@@ -161,13 +163,13 @@ with lib;
       input {
         kb_layout = pl
 
-        follow_mouse = 2
+        follow_mouse = 1
       }
 
       general {
         gaps_in = 2
         gaps_out = 5
-        border_size = 1
+        border_size = 2
 
         col.active_border = rgb(${config.patmods.colors.hypr.border_active})
         col.inactive_border = rgb(${config.patmods.colors.hypr.border_inactive})

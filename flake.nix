@@ -41,7 +41,6 @@
               ... }: let
     lib = nixpkgs.lib;
     system = "x86_64-linux";
-    userMod = import ./user.nix { };
 
     pkgs = (import nixpkgs {
       inherit system;
@@ -58,22 +57,54 @@
       ];
     });
 
+    configsToGenerate = (import ./configurations.nix);
+
     globalConf = [
-      ./user.nix
       ./profile
       ./theme
     ];
   in {
-    nixosConfigurations.${userMod.profile.hostname} = lib.nixosSystem {
-      inherit system;
+    nixosConfigurations = with builtins; listToAttrs (map (host: {
+      name = host.hostname;
+      value = lib.nixosSystem {
+        inherit system;
 
-      modules = globalConf ++ [
-        lanzaboote.nixosModules.lanzaboote
-        nix-gaming.nixosModules.pipewireLowLatency
-        ./profile/${userMod.profile.hostname}/os.nix
-        ./nixos/configuration.nix
-      ];
-    };
+        modules = globalConf ++ host.osConfigs ++ [
+          lanzaboote.nixosModules.lanzaboote
+          nix-gaming.nixosModules.pipewireLowLatency
+          ({ ... }: {
+            networking.hostName = host.hostname;
+            users.users = listToAttrs (map (user: {
+              name = user.username;
+              value = {
+                isNormalUser = true;
+                extraGroups = user.groups or [];
+              };
+            }) host.users);
+            nix.settings.trusted-users = (map (user: user.username) (filter (user: user.trustedUser) host.users));
+          })
+          ./nixos/configuration.nix
+        ];
+      };
+    }) configsToGenerate);
+
+    homeConfigurations = with builtins; listToAttrs (concatMap (host: (map (user: {
+      name = "${user.username}@${host.hostname}";
+      value = home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+        modules = globalConf ++ user.homeManagerConfigs ++ [
+          hyprland.homeManagerModules.default
+          ({ ... }: {
+            profile = {
+              username = user.username;
+              homeDirectory = user.homeDirectory;
+              hostname = host.hostname;
+            };
+          })
+          ./home/home.nix
+        ];
+      };
+    }) host.users)) configsToGenerate);
 
     devShells.${system} = {
       eww = pkgs.mkShell {
@@ -119,18 +150,6 @@
           exit
         '';
       };
-    };
-
-    homeConfigurations."${userMod.profile.username}@${userMod.profile.hostname}" = home-manager.lib.homeManagerConfiguration {
-      inherit pkgs;
-      modules = globalConf ++ [
-        hyprland.homeManagerModules.default
-        { imports = [
-            ./profile/${userMod.profile.hostname}/hm.nix
-            ./home/home.nix
-          ];
-        }
-      ];
     };
   };
 

@@ -72,7 +72,9 @@ in {
   # This is needed for Hyprland to work
   services.xserver.videoDrivers = [ "nvidia" ];
 
-  hardware.opengl.extraPackages = with pkgs; [ vaapiVdpau ];
+  hardware.opengl = {
+    extraPackages = with pkgs; [ vaapiVdpau ];
+  };
 
   hardware.nvidia = {
     modesetting.enable = true;

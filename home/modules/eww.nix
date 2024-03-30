@@ -24,9 +24,9 @@ in {
 
     package = mkOption {
       type = types.package;
-      default = pkgs.eww-wayland;
-      defaultText = literalExpression "pkgs.eww-wayland";
-      example = literalExpression "pkgs.eww-wayland";
+      default = pkgs.eww;
+      defaultText = literalExpression "pkgs.eww";
+      example = literalExpression "pkgs.eww";
       description = ''
         The eww package to install
       '';

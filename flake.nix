@@ -10,10 +10,10 @@
 
     hyprland.url = "github:hyprwm/Hyprland";
 
-    eww = {
-      url = "github:elkowar/eww";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # eww = {
+    #   url = "github:elkowar/eww";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
 
     nvim = {
       url = "github:patryk3211/neovim-flake";
@@ -34,7 +34,7 @@
               home-manager,
               lanzaboote,
               hyprland,
-              eww,
+              # eww,
               nvim,
               rust-overlay,
               nix-gaming,
@@ -42,20 +42,18 @@
     lib = nixpkgs.lib;
     system = "x86_64-linux";
 
-    pkgs = (import nixpkgs {
-      inherit system;
-      overlays = [
-        rust-overlay.overlays.default
-        eww.overlays.default
-        (final: prev: {
-          neovim = nvim.packages.x86_64-linux.default;
-          steam = prev.steam.override {
-            extraProfile = "export STEAM_EXTRA_COMPAT_TOOLS_PATHS='${nix-gaming.packages.${prev.system}.proton-ge}'";
-          };
-          wine = nix-gaming.packages.${prev.system}.wine-ge;
-        })
-      ];
-    });
+    defaultOverlays = [
+      rust-overlay.overlays.default
+      # eww.overlays.default
+      (final: prev: {
+        neovim = nvim.packages.x86_64-linux.default;
+        steam = prev.steam.override {
+          extraProfile = "export STEAM_EXTRA_COMPAT_TOOLS_PATHS='${nix-gaming.packages.${prev.system}.proton-ge}'";
+        };
+        wine = nix-gaming.packages.${prev.system}.wine-ge;
+      })
+    ];
+    basePackages = (import nixpkgs { inherit system; });
 
     configsToGenerate = (import ./configurations.nix);
 
@@ -70,6 +68,7 @@
         inherit system;
 
         modules = globalConf ++ host.osConfigs ++ [
+          ({ config, pkgs, ... }: { nixpkgs.overlays = defaultOverlays ++ host.overlays; })
           lanzaboote.nixosModules.lanzaboote
           nix-gaming.nixosModules.pipewireLowLatency
           ({ ... }: {
@@ -88,7 +87,12 @@
       };
     }) configsToGenerate);
 
-    homeConfigurations = with builtins; listToAttrs (concatMap (host: (map (user: {
+    homeConfigurations = with builtins; listToAttrs (concatMap (host: let
+      pkgs = (import nixpkgs {
+        inherit system;
+        overlays = defaultOverlays ++ host.overlays;
+      });
+    in (map (user: {
       name = "${user.username}@${host.hostname}";
       value = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
@@ -107,7 +111,7 @@
     }) host.users)) configsToGenerate);
 
     devShells.${system} = {
-      eww = pkgs.mkShell {
+      eww = basePackages.mkShell {
         shellHook = ''
           # Initialize the eww development environment
           echo "Preparing development environment"

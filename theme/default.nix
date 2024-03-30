@@ -13,7 +13,12 @@
     };
 
     gtk = {
-      package = pkgs.catppuccin-gtk;
+      package = pkgs.catppuccin-gtk.override {
+        accents = [ "blue" ];
+        size = "standard";
+        tweaks = [ "float" ];
+        variant = "frappe";
+      };
       # package = pkgs.catppuccin-gtk.override {
       #   accents = [ "blue" ];
       #   variant = "frappe";

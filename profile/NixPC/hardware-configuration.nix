@@ -13,6 +13,7 @@ in {
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
+  boot.blacklistedKernelModules = [ "dvb_usb_rtl28xxu" ];
   boot.supportedFilesystems = [ "ntfs" ];
   boot.kernelParams = [ "nvidia_drm.fbdev=1" ];
 
@@ -85,4 +86,6 @@ in {
 
     package = config.boot.kernelPackages.nvidiaPackages.stable;
   };
+
+  hardware.rtl-sdr.enable = true;
 }

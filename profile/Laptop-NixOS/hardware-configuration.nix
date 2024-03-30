@@ -63,4 +63,6 @@ in {
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 
   services.upower.enable = true;
+
+  hardware.rtl-sdr.enable = true;
 }

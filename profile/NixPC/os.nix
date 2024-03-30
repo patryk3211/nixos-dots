@@ -1,11 +1,10 @@
-{ config, pkgs, ... }:
-
-{
+{ config, pkgs, ... }: {
   imports = [
     ./hardware-configuration.nix
     ./wm.nix
-    # ./nvidiax.nix
   ];
+
+  environment.systemPackages = [ pkgs.rtl-sdr ];
 
   boot = {
     kernelPackages = pkgs.linuxPackages_zen;

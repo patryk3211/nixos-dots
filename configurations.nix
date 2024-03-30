@@ -4,6 +4,9 @@
     osConfigs = [
       ./profile/NixPC/os.nix
     ];
+    overlays = [
+      (import ./overlays/rtl-sdr-overlay.nix)
+    ];
     users = [
       {
         username = "patryk";
@@ -11,7 +14,7 @@
         homeManagerConfigs = [
           ./profile/NixPC/hm.nix
         ];
-        groups = [ "wheel" "networkmanager" "video" "dialout" "docker" "cdrom" ];
+        groups = [ "wheel" "networkmanager" "video" "dialout" "docker" "cdrom" "plugdev" ];
         trustedUser = true;
       }
     ];
@@ -19,14 +22,17 @@
   {
     hostname = "Laptop-NixOS";
     osConfigs = [
-      ./profile/NixPC/os.nix
+      ./profile/Laptop-NixOS/os.nix
+    ];
+    overlays = [
+      (import ./overlays/rtl-sdr-overlay.nix)
     ];
     users = [
       {
         username = "patryk";
         homeDirectory = "/home/patryk";
         homeManagerConfigs = [
-          ./profile/Laptop-NixOS/os.nix
+          ./profile/Laptop-NixOS/hm.nix
         ];
         groups = [ "wheel" "networkmanager" "video" "dialout" "docker" "cdrom" ];
         trustedUser = true;

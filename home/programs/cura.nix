@@ -5,7 +5,7 @@
       url = "https://github.com/Ultimaker/Cura/releases/download/5.6.0/UltiMaker-Cura-5.6.0-linux-X64.AppImage";
       sha256 = "107896a0da4b2873f3bfaad9aed36012bef2fff89571161e57f4da0a7f10a440";
     };
-    extraPkgs = pkgs: with pkgs; [ util-linux ];
+    extraPkgs = pkgs: with pkgs; [ util-linux.mount ];
   });
   packageWithEnv = pkgs.symlinkJoin {
     name = "ultimaker-cura-withenv";

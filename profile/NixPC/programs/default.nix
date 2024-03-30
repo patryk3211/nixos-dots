@@ -1,10 +1,13 @@
 { pkgs, ... }: let
   bcnc = import ./bcnc.nix { inherit pkgs; fetchurl = pkgs.fetchurl; fetchhg = pkgs.fetchhg; };
 in {
+  imports = [
+    ./radio.nix
+  ];
 
   home.packages = with pkgs; [
     blender
-    musescore
+    # musescore
     (python311.withPackages(ps: [
       pkgs.python311Packages.cython
       (bcnc ps).bCNC

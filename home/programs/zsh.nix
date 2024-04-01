@@ -1,20 +1,20 @@
 { config, pkgs, ... }: {
+  home.shellAliases = {
+    nixos-update = "sudo nixos-rebuild switch --flake /.nixcfg";
+    hm-update = "home-manager switch --flake /.nixcfg";
+    full-update = "pushd /.nixcfg && nix flake update && sudo nixos-rebuild switch --flake /.nixcfg && home-manager switch --flake /.nixcfg && popd";
+    ll = "ls -lah";
+    icat = "kitty +kitten icat";
+    hm = "home-manager";
+    ssh = "kitty +kitten ssh";
+    nix-edit = "cd /.nixcfg && nvim .";
+  };
+
   programs.zsh =  {
     enable = true;
     syntaxHighlighting.enable = true;
     enableCompletion = true;
     autosuggestion.enable = true;
-
-    shellAliases = {
-      nixos-update = "sudo nixos-rebuild switch --flake /.nixcfg";
-      hm-update = "home-manager switch --flake /.nixcfg";
-      full-update = "pushd /.nixcfg && nix flake update && sudo nixos-rebuild switch --flake /.nixcfg && home-manager switch --flake /.nixcfg && popd";
-      ll = "ls -lah";
-      icat = "kitty +kitten icat";
-      hm = "home-manager";
-      ssh = "kitty +kitten ssh";
-      nix-edit = "cd /.nixcfg && nvim .";
-    };
 
     plugins = [
       {

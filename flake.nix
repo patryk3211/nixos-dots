@@ -14,6 +14,8 @@
     #   url = "github:elkowar/eww";
     #   inputs.nixpkgs.follows = "nixpkgs";
     # };
+    nix-index-database.url = "github:nix-community/nix-index-database";
+    nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
 
     nvim = {
       url = "github:patryk3211/neovim-flake";
@@ -38,6 +40,7 @@
               nvim,
               rust-overlay,
               nix-gaming,
+              nix-index-database,
               ... }: let
     lib = nixpkgs.lib;
     system = "x86_64-linux";
@@ -98,6 +101,7 @@
         inherit pkgs;
         modules = globalConf ++ user.homeManagerConfigs ++ [
           hyprland.homeManagerModules.default
+          nix-index-database.hmModules.nix-index
           ({ ... }: {
             profile = {
               username = user.username;

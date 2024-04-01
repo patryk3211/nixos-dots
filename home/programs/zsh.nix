@@ -3,7 +3,7 @@
     enable = true;
     syntaxHighlighting.enable = true;
     enableCompletion = true;
-    enableAutosuggestions = true;
+    autosuggestion.enable = true;
 
     shellAliases = {
       nixos-update = "sudo nixos-rebuild switch --flake /.nixcfg";

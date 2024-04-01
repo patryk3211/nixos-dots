@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 
 {
   programs.gpg = {
@@ -8,6 +8,6 @@
   services.gpg-agent = {
     enable = true;
     enableFishIntegration = true;
-    pinentryFlavor = "curses";
+    pinentryPackage = pkgs.pinentry-curses;
   };
 }

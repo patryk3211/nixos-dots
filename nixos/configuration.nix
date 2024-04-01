@@ -95,6 +95,7 @@
         buildPortalsInGnome = false;
       })
     ];
+    config.common.default = "*";
   };
   hardware.opengl = {
     enable = true;

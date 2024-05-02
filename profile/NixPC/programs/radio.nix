@@ -7,5 +7,6 @@ in {
       ];
     })
     sdrpp
+    gpredict
   ];
 }

@@ -23,7 +23,7 @@ load_workspaces
 
 json_workspaces_eww
 
-socat -u unix-connect:/tmp/hypr/$HYPRLAND_INSTANCE_SIGNATURE/.socket2.sock - | rg --line-buffered "workspace|window" | while read -r line; do
+socat -u unix-connect:$XDG_RUNTIME_DIR/hypr/$HYPRLAND_INSTANCE_SIGNATURE/.socket2.sock - | rg --line-buffered "workspace|window" | while read -r line; do
     data=${line#*>>}
     case ${line%>>*} in
         workspace)

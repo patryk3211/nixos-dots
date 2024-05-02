@@ -51,14 +51,14 @@ pw-dump -m | jaq -cr '.' | while read -er; do
     if [[ -n "$MIC_NODE" ]]; then
         MIC_MUTED=$(echo $MIC_NODE | is_node_muted)
         RAW_VOLUME=$(echo $MIC_NODE | node_volume)
-        MIC_VOLUME=$(kalker "cbrt($RAW_VOLUME)")
+        MIC_VOLUME=$(echo "$RAW_VOLUME" | awk '{ print $1 ^ (1/3) }')
     fi
 
     SPEAKER_NODE=$(echo $REPLY | get_node_by_name $DEFAULT_SINK)
     if [[ -n "$SPEAKER_NODE" ]]; then
         SPEAKER_MUTED=$(echo $SPEAKER_NODE | is_node_muted)
         RAW_VOLUME=$(echo $SPEAKER_NODE | node_volume)
-        SPEAKER_VOLUME=$(kalker "cbrt($RAW_VOLUME)")
+        SPEAKER_VOLUME=$(echo "$RAW_VOLUME" | awk '{ print $1 ^ (1/3) }')
     fi
 
     printf '{
@@ -70,6 +70,6 @@ pw-dump -m | jaq -cr '.' | while read -er; do
         "mute": %s,
         "volume": %s
     }
-}\n' $MIC_MUTED $MIC_VOLUME $SPEAKER_MUTED $SPEAKER_VOLUME | jaq -c '.'
+}\n' "$MIC_MUTED" "$MIC_VOLUME" "$SPEAKER_MUTED" "$SPEAKER_VOLUME" | jaq -c '.'
 done
 

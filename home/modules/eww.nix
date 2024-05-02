@@ -14,9 +14,9 @@ let
     librsvg
     pipewire
     wireplumber
-    kalker
     playerctl
     coreutils-full
+    gawk
   ];
 in {
   options.patmods.eww = {

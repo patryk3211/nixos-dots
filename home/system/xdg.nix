@@ -3,7 +3,7 @@ let
   browser = [ "firefox.desktop" ];
 
   vlc = [ "vlc.desktop" ];
-  image = [ "com.github.weclaw1.ImageRoll.desktop" ];
+  image = [ "org.gnome.eog.desktop" ];
   filemanager = [ "org.gnome.Nautilus.desktop" ];
   pdf = [ "atril.desktop" ];
   texteditor = [ "nvim.desktop" ];

@@ -1,4 +1,4 @@
-{ options, config, ... }:
+{ options, config, pkgs, ... }:
 
 {
   profile = {

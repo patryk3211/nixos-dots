@@ -5,7 +5,7 @@
 
   qt = {
     enable = true;
-    platformTheme = "qtct";
+    platformTheme.name = "qtct";
     style = {
       name = "kvantum";
     };
@@ -30,7 +30,7 @@
       gui_effects=General, AnimateMenu, AnimateCombo, AnimateTooltip, AnimateToolBox
       keyboard_scheme=2
       menus_have_icons=true
-      stylesheets=/home/patryk/.nix-profile/share/qt${toString version}ct/qss/fusion-fixes.qss, /home/patryk/.nix-profile/share/qt${toString version}ct/qss/scrollbar-simple.qss, /home/patryk/.nix-profile/share/qt${toString version}ct/qss/sliders-simple.qss, /home/patryk/.nix-profile/share/qt${toString version}ct/qss/tooltip-simple.qss, /home/patryk/.nix-profile/share/qt${toString version}ct/qss/traynotification-simple.qss
+      stylesheets=/home/patryk/.nix-profile/share/qt${toString version}ct/qss/fusion-fixes.qss #, /home/patryk/.nix-profile/share/qt${toString version}ct/qss/scrollbar-simple.qss, /home/patryk/.nix-profile/share/qt${toString version}ct/qss/sliders-simple.qss, /home/patryk/.nix-profile/share/qt${toString version}ct/qss/tooltip-simple.qss, /home/patryk/.nix-profile/share/qt${toString version}ct/qss/traynotification-simple.qss
       show_shortcuts_in_context_menus=true
       toolbutton_style=4
       underline_shortcut=1

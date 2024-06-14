@@ -8,7 +8,7 @@
 
     lanzaboote.url = "github:nix-community/lanzaboote";
 
-    hyprland.url = "github:hyprwm/Hyprland";
+    # hyprland.url = "github:hyprwm/Hyprland";
 
     # eww = {
     #   url = "github:elkowar/eww";
@@ -17,10 +17,10 @@
     nix-index-database.url = "github:nix-community/nix-index-database";
     nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
 
-    nvim = {
-      url = "github:patryk3211/neovim-flake";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # nvim = {
+    #   url = "github:patryk3211/neovim-flake";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
 
     rust-overlay = {
       url = "github:oxalica/rust-overlay";
@@ -35,9 +35,9 @@
   outputs = { nixpkgs,
               home-manager,
               lanzaboote,
-              hyprland,
+              # hyprland,
               # eww,
-              nvim,
+              # nvim,
               rust-overlay,
               nix-gaming,
               nix-index-database,
@@ -49,7 +49,7 @@
       rust-overlay.overlays.default
       # eww.overlays.default
       (final: prev: {
-        neovim = nvim.packages.x86_64-linux.default;
+        # neovim = nvim.packages.x86_64-linux.default;
         # steam = prev.steam.override {
         #   extraProfile = "export STEAM_EXTRA_COMPAT_TOOLS_PATHS='${nix-gaming.packages.${prev.system}.proton-ge}'";
         # };
@@ -100,7 +100,7 @@
       value = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         modules = globalConf ++ user.homeManagerConfigs ++ [
-          hyprland.homeManagerModules.default
+          # hyprland.homeManagerModules.default
           nix-index-database.hmModules.nix-index
           ({ ... }: {
             profile = {
@@ -167,7 +167,7 @@
       "https://helix.cachix.org"
       "https://fufexan.cachix.org"
       "https://nix-gaming.cachix.org"
-      "https://hyprland.cachix.org"
+      # "https://hyprland.cachix.org"
       # "https://cache.privatevoid.net"
     ];
     extra-trusted-public-keys = [
@@ -177,7 +177,7 @@
       "helix.cachix.org-1:ejp9KQpR1FBI2onstMQ34yogDm4OgU2ru6lIwPvuCVs="
       "fufexan.cachix.org-1:LwCDjCJNJQf5XD2BV+yamQIMZfcKWR9ISIFy5curUsY="
       "nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4="
-      "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
+      # "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
       # "cache.privatevoid.net:SErQ8bvNWANeAvtsOESUwVYr2VJynfuc9JRwlzTTkVg="
     ];
   };

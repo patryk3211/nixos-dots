@@ -7,7 +7,7 @@
     gnome.nautilus
     btop
     vlc
-    image-roll
+    # image-roll
     gnome.eog
     mate.atril
   ];
@@ -19,6 +19,7 @@
   programs = {
     direnv = {
       enable = true;
+      enableZshIntegration = true;
       nix-direnv.enable = true;
     };
     bat.enable = true;

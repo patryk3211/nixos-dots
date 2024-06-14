@@ -109,6 +109,10 @@
     "nvidia-settings"
     "nvidia-x11"
     "nvidia-persistenced"
+    "steam"
+    "steam-original"
+    "steam-run"
+    "libXNVCtrl"
   ];
 
   hardware.enableRedistributableFirmware = true;

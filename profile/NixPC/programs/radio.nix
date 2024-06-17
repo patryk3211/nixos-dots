@@ -6,7 +6,7 @@ in {
         osmosdr
       ];
     })
-    # sdrpp
+    sdrpp
     gpredict
   ];
 }

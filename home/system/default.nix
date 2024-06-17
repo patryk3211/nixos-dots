@@ -3,6 +3,7 @@
 {
   home.packages = with pkgs; [
     config.theme.icon.package
+    config.theme.cursor.package
 
     libsecret
     udiskie

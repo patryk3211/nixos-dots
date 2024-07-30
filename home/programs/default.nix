@@ -10,7 +10,7 @@
     distrobox
   ];
 
-  imports = [
+ imports = [
     ./kitty.nix
     ./zsh.nix
     ./firefox.nix
@@ -20,6 +20,7 @@
     ./3d.nix
     ./utilities.nix
     ./gpg.nix
+    ./python.nix
   ];
 
   xdg.desktopEntries."bCNC.desktop" = {

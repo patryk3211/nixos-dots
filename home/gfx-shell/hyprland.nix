@@ -135,7 +135,7 @@ with lib;
       { rule = "workspace 6 silent"; target = "discord"; }
       { rule = "workspace 6 silent"; target = "WebCord"; }
       { rule = "workspace 8 silent"; target = "thunderbird"; }
-      { rule = "workspace 9 silent"; target = "class:(org\.keepassxc\.KeePassXC),floating:0"; v2 = true; }
+      # { rule = "workspace 9 silent"; target = "class:(org\.keepassxc\.KeePassXC),floating:0"; v2 = true; }
 
       { rule = "noinitialfocus"; target = "discord"; }
       { rule = "noinitialfocus"; target = "firefox"; }

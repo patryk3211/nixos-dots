@@ -3,6 +3,7 @@
     compile_commands.json
     .ccls-cache
     .cache
+    .editorconfig
   '';
 in {
   programs.git = {

@@ -6,10 +6,32 @@
     xorg.libXrender
     xorg.libXtst
     xorg.libXi
+    # xorg.libXdamage
+    # xorg.libXrandr
+    # xorg.libXfixes
+    # xorg.libXcomposite
+    # xorg.libxcb
+    # xorg.xcbutil
+    # xorg.libxkbfile
+    # xorg.libxshmfence
+    # xorg.libXcursor
+    # xorg.xcbutilrenderutil
+    # xorg.xcbutilimage
+    # xorg.xcbutilkeysyms
+    # xorg.xcbutilcursor
+    # egl-wayland
+    # wayland
+    # pulseaudio
     libGL
     freetype
     fontconfig
     libusb1
+    # libdrm
+    # glib
+    # libxkbcommon
+    # dbus
+    # krb5
+    # nss
   ];
 in {
   programs.nix-ld = {

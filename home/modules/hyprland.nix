@@ -104,6 +104,10 @@ in {
       exec-once = eww open mainbar
       exec-once = hyprctl setcursor $XCURSOR_THEME $XCURSOR_SIZE
 
+      debug {
+        disable_logs = false
+      }
+
       ${concatStringsSep "\n" (map (v: "exec-once = ${v}") cfg.startup)}
 
       # Binds

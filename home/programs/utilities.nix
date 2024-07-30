@@ -3,12 +3,12 @@
 {
   home.packages = with pkgs; [
     kalker
-    gnome.file-roller
-    gnome.nautilus
+    file-roller
+    nautilus
     btop
     vlc
     # image-roll
-    gnome.eog
+    eog
     mate.atril
   ];
 

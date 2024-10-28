@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }: {
+{ config, pkgs, lib, ... }: {
   options = {
     theme = lib.mkOption {
       type = lib.types.attrsOf lib.types.anything;
@@ -14,22 +14,18 @@
 
     gtk = {
       package = pkgs.catppuccin-gtk.override {
-        accents = [ "blue" ];
+        accents = [ config.catppuccin.accent ];
         size = "standard";
         tweaks = [ "float" ];
-        variant = "frappe";
+        variant = config.catppuccin.flavor;
       };
-      # package = pkgs.catppuccin-gtk.override {
-      #   accents = [ "blue" ];
-      #   variant = "frappe";
-      # };
-      name = "Catppuccin-Frappe-Standard-Blue-Dark";
+      name = "catppuccin-${config.catppuccin.flavor}-${config.catppuccin.accent}-standard+float";
     };
 
-    qt = {
-      package = pkgs.catppuccin-kvantum;
-      name = "Catppuccin-Frappe-Blue";
-    };
+    # qt = {
+    #   package = pkgs.catppuccin-kvantum;
+    #   name = "Catppuccin-Frappe-Blue";
+    # };
 
     cursor = {
       package = pkgs.catppuccin-cursors.frappeLight;

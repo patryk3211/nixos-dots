@@ -3,16 +3,16 @@
 {
   home.packages = with pkgs; [
     config.theme.icon.package
-    config.theme.cursor.package
+    # config.theme.cursor.package
 
     libsecret
     udiskie
   ];
 
   home.pointerCursor = {
-    name = config.theme.cursor.name;
+    # name = config.theme.cursor.name;
     size = 16;
-    package = config.theme.cursor.package;
+    # package = config.theme.cursor.package;
     gtk.enable = true;
   };
 

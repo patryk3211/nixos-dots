@@ -8,6 +8,8 @@
 
     lanzaboote.url = "github:nix-community/lanzaboote";
 
+    catppuccin.url = "github:catppuccin/nix";
+
     # hyprland.url = "github:hyprwm/Hyprland";
 
     # eww = {
@@ -38,6 +40,7 @@
               # hyprland,
               # eww,
               # nvim,
+              catppuccin,
               rust-overlay,
               nix-gaming,
               nix-index-database,
@@ -62,7 +65,6 @@
 
     globalConf = [
       ./profile
-      ./theme
     ];
   in {
     nixosConfigurations = with builtins; listToAttrs (map (host: {
@@ -109,7 +111,9 @@
               hostname = host.hostname;
             };
           })
+          ./theme
           ./home/home.nix
+          catppuccin.homeManagerModules.catppuccin
         ];
       };
     }) host.users)) configsToGenerate);

@@ -4,7 +4,10 @@
     ./wm.nix
   ];
 
-  environment.systemPackages = [ pkgs.rtl-sdr ];
+  environment.systemPackages = [
+    pkgs.rtl-sdr
+    pkgs.hplip
+  ];
 
   boot = {
     kernelPackages = pkgs.linuxPackages_zen;
@@ -37,4 +40,7 @@
       ];
     };
   };
+
+  systemd.services.NetworkManager-wait-online.enable = false;
+  # systemd.network.wait-online.enable = false;
 }

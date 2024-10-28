@@ -1,11 +1,11 @@
 { config, pkgs, ... }:
 
 {
-  home.packages = [ config.theme.qt.package ];
+  # home.packages = [ config.theme.qt.package ];
 
   qt = {
     enable = true;
-    platformTheme.name = "qtct";
+    platformTheme.name = "kvantum";
     style = {
       name = "kvantum";
     };
@@ -37,10 +37,10 @@
       wheel_scroll_lines=3
     '';
   in {
-    "Kvantum/kvantum.kvconfig".text = ''
-      [General]
-      theme=${config.theme.qt.name}
-    '';
+    # "Kvantum/kvantum.kvconfig".text = ''
+    #   [General]
+    #   theme=${config.theme.qt.name}
+    # '';
 
     "qt5ct/qt5ct.conf".text = (qtConfig 5);
     "qt6ct/qt6ct.conf".text = (qtConfig 6);

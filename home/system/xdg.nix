@@ -35,6 +35,10 @@ in {
         "audio/*" = vlc;
         "video/*" = vlc;
         "image/*" = image;
+        "image/svg+xml" = image;
+        "image/png" = image;
+        "image/vnd.microsoft.icon" = image;
+        "image/jpeg" = image;
 
         "application/x-directory" = filemanager;
         "text/directory" = filemanager;

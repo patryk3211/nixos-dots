@@ -20,9 +20,9 @@ let
   '';*/
 in {
   environment.systemPackages = [
-    config.theme.cursor.package
-    config.theme.gtk.package
-    config.theme.icon.package
+    # config.theme.cursor.package
+    # config.theme.gtk.package
+    # config.theme.icon.package
     pkgs.iosevka
   ];
 

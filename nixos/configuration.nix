@@ -15,7 +15,7 @@
   ];
 
   nix = {
-    package = pkgs.nixFlakes;
+    package = pkgs.nixVersions.latest;
     extraOptions = ''
       experimental-features = nix-command flakes
     '';
@@ -34,8 +34,10 @@
   # Enable CUPS to print documents.
   services.printing = {
     enable = true;
+    startWhenNeeded = true;
     drivers = [
       pkgs.brlaser
+      pkgs.hplipWithPlugin
     ];
   };
 
@@ -91,9 +93,10 @@
     enable = true;
     extraPortals = with pkgs; [
       xdg-desktop-portal-hyprland
-      (xdg-desktop-portal-gtk.override {
-        buildPortalsInGnome = false;
-      })
+      xdg-desktop-portal-gtk
+      # (xdg-desktop-portal-gtk.override {
+      #   buildPortalsInGnome = false;
+      # })
     ];
     config.common.default = "*";
   };
@@ -113,6 +116,8 @@
     "steam-original"
     "steam-run"
     "libXNVCtrl"
+    "hplip"
+    "steam-unwrapped"
   ];
 
   hardware.enableRedistributableFirmware = true;
@@ -132,8 +137,7 @@
 
   virtualisation.docker = {
     enable = true;
-    enableNvidia = true;
-    enableOnBoot = true;
+    enableOnBoot = false;
   };
 
   boot.kernel.sysctl."kernel.sysrq" = 1;

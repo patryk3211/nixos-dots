@@ -12,4 +12,16 @@
     ./swaylock.nix
     ./swayidle.nix
   ];
+
+  catppuccin = {
+    enable = true;
+    flavor = "frappe";
+    accent = "blue";
+
+    pointerCursor = {
+      enable = true;
+      flavor = "frappe";
+      accent = "blue";
+    };
+  };
 }

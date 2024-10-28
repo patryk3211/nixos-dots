@@ -50,7 +50,7 @@ in {
     "/windrive" = {
       device = "/dev/disk/by-uuid/A0DCCC38DCCC0A8C";
       fsType = "ntfs-3g";
-      options = [ "rw" "uid=1000" ];
+      options = [ "rw" "uid=1000" "nofail" ];
     };
   };
 
@@ -84,8 +84,10 @@ in {
     open = false;
     nvidiaSettings = false;
 
-    package = config.boot.kernelPackages.nvidiaPackages.beta;
+    package = config.boot.kernelPackages.nvidiaPackages.production; # legacy_535;
   };
+
+  nixpkgs.config.nvidia.acceptLicense = true;
 
   hardware.rtl-sdr.enable = true;
 }

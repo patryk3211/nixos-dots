@@ -28,7 +28,7 @@ in {
 
     lunarvim
     
-    kicad-small
+    # kicad-small
 
     bottles
   ];

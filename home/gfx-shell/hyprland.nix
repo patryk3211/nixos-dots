@@ -147,8 +147,8 @@ with lib;
 
       { rule = "workspace 1 silent"; target = "([Mm]inecraft.*)"; }
 
-      { rule = "stayfocused"; target = "(starship evo.exe)"; }
-      { rule = "forceinput"; target = "(starship evo.exe)"; }
+      # { rule = "stayfocused"; target = "(starship evo.exe)"; }
+      # { rule = "forceinput"; target = "(starship evo.exe)"; }
     ];
   };
 

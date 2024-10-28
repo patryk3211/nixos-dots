@@ -6,32 +6,45 @@
     xorg.libXrender
     xorg.libXtst
     xorg.libXi
-    # xorg.libXdamage
-    # xorg.libXrandr
-    # xorg.libXfixes
-    # xorg.libXcomposite
-    # xorg.libxcb
-    # xorg.xcbutil
-    # xorg.libxkbfile
-    # xorg.libxshmfence
-    # xorg.libXcursor
-    # xorg.xcbutilrenderutil
-    # xorg.xcbutilimage
-    # xorg.xcbutilkeysyms
-    # xorg.xcbutilcursor
-    # egl-wayland
-    # wayland
-    # pulseaudio
+    xorg.libXdamage
+    xorg.libXrandr
+    xorg.libXfixes
+    xorg.libXcomposite
+    xorg.libxcb
+    xorg.xcbutil
+    xorg.libxkbfile
+    xorg.libxshmfence
+    xorg.libXcursor
+    xorg.xcbutilrenderutil
+    xorg.xcbutilimage
+    xorg.xcbutilkeysyms
+    xorg.xcbutilcursor
+    egl-wayland
+    wayland
+    pulseaudio
     libGL
     freetype
     fontconfig
     libusb1
-    # libdrm
-    # glib
-    # libxkbcommon
-    # dbus
-    # krb5
-    # nss
+    # libxcrypt
+    libxcrypt-legacy
+    libdrm
+    glib
+    libxkbcommon
+    dbus
+    krb5
+    nss
+    nspr
+    atk
+    cups
+    gtk3
+    pango
+    cairo
+    expat
+    mesa
+    libva
+    pipewire
+    alsa-lib
   ];
 in {
   programs.nix-ld = {
@@ -39,6 +52,6 @@ in {
     libraries = options.programs.nix-ld.libraries.default ++ libraries;
   };
   environment.sessionVariables = {
-    LD_LIBRARY_PATH="${lib.makeLibraryPath libraries}:/run/opengl-driver/lib:/run/opengl-driver-32/lib";
+    PREP_LD_LIBRARY_PATH="${lib.makeLibraryPath libraries}:/run/opengl-driver/lib:/run/opengl-driver-32/lib";
   };
 }

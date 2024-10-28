@@ -14,7 +14,7 @@
         homeManagerConfigs = [
           ./profile/NixPC/hm.nix
         ];
-        groups = [ "wheel" "networkmanager" "video" "dialout" "docker" "cdrom" "plugdev" "realtime" ];
+        groups = [ "wheel" "networkmanager" "video" "dialout" "docker" "cdrom" "plugdev" "realtime" "lp" ];
         trustedUser = true;
       }
     ];

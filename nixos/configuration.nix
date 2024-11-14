@@ -140,6 +140,8 @@
     enableOnBoot = false;
   };
 
+  services.flatpak.enable = true;
+
   boot.kernel.sysctl."kernel.sysrq" = 1;
 
   system.activationScripts.binbash = ''

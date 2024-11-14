@@ -31,6 +31,9 @@
 
     initExtra = ''
       source ~/.p10k.zsh
+
+      setopt HIST_IGNORE_SPACE
+      alias jrnl=" jrnl"
     '';
   };
 }

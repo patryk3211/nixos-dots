@@ -31,5 +31,7 @@ in {
     # kicad-small
 
     bottles
+
+    jrnl
   ];
 }

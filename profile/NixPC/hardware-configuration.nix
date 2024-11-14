@@ -84,7 +84,7 @@ in {
     open = false;
     nvidiaSettings = false;
 
-    package = config.boot.kernelPackages.nvidiaPackages.production; # legacy_535;
+    package = config.boot.kernelPackages.nvidiaPackages.beta; # production; # legacy_535;
   };
 
   nixpkgs.config.nvidia.acceptLicense = true;

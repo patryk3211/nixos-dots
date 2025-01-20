@@ -6,6 +6,7 @@ with lib;
     xdg-user-dirs
     (buildEnv { name = "hyprland-bins"; paths = [ ./hyprland-bins ]; })
     hyprpaper
+    hyprland-qtutils
     wl-clipboard
     grim
     slurp

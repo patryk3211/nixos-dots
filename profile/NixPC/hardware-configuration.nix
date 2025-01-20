@@ -82,7 +82,7 @@ in {
     powerManagement.enable = true;
 
     open = false;
-    nvidiaSettings = false;
+    nvidiaSettings = true;
 
     package = config.boot.kernelPackages.nvidiaPackages.beta; # production; # legacy_535;
   };

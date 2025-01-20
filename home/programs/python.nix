@@ -34,7 +34,11 @@
   ));
 in {
   home.packages = [
-    patchedpython
+    (patchedpython.withPackages (ppkgs: with ppkgs; [
+      # pip
+      tkinter
+      # cython
+    ]))
   ];
 }
 

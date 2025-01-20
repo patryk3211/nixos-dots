@@ -21,12 +21,13 @@ in {
     wine
 
     ffmpeg
-    jetbrains.idea-community
+    # jetbrains.idea-community
     # blockbench-electron
 
     digikam
 
     lunarvim
+    vscodium-fhs
     
     # kicad-small
 

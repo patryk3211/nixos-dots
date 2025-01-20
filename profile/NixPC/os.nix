@@ -1,12 +1,13 @@
-{ config, pkgs, ... }: {
+{ config, pkgs, lib, ... }: {
   imports = [
     ./hardware-configuration.nix
     ./wm.nix
   ];
 
-  environment.systemPackages = [
-    pkgs.rtl-sdr
-    pkgs.hplip
+  environment.systemPackages = with pkgs; [
+    rtl-sdr
+    hplip
+    xclip
   ];
 
   boot = {
@@ -40,6 +41,21 @@
       ];
     };
   };
+
+  # Uncomment to switch to XFCE desktop
+  services.xserver = {
+    enable = true;
+    desktopManager = {
+      xterm.enable = false;
+      xfce.enable = true;
+    };
+    xkb.layout = "pl";
+    exportConfiguration = true;
+  };
+
+  services.displayManager.defaultSession = "xfce";
+  services.greetd.enable = lib.mkForce false;
+  users.groups.greeter = {};
 
   systemd.services.NetworkManager-wait-online.enable = false;
   # systemd.network.wait-online.enable = false;

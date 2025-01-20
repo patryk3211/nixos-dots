@@ -4,6 +4,7 @@
   home.packages = with pkgs; [
     config.theme.icon.package
     # config.theme.cursor.package
+    config.home.pointerCursor.package
 
     libsecret
     udiskie
@@ -14,6 +15,7 @@
     size = 16;
     # package = config.theme.cursor.package;
     gtk.enable = true;
+    x11.enable = true;
   };
 
   dconf = {

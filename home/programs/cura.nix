@@ -1,6 +1,7 @@
 { pkgs, ... }: let
   package = (pkgs.appimageTools.wrapType2 {
-    name = "ultimaker-cura";
+    pname = "ultimaker-cura";
+    version = "5.6.0";
     src = pkgs.fetchurl {
       url = "https://github.com/Ultimaker/Cura/releases/download/5.6.0/UltiMaker-Cura-5.6.0-linux-X64.AppImage";
       sha256 = "107896a0da4b2873f3bfaad9aed36012bef2fff89571161e57f4da0a7f10a440";

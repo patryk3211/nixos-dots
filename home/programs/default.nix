@@ -6,7 +6,8 @@
     thunderbird
     neovim
     discord
-    openjdk17
+    # openjdk17
+    zulu
     distrobox
   ];
 

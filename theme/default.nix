@@ -28,8 +28,8 @@
     # };
 
     cursor = {
-      package = pkgs.catppuccin-cursors.frappeLight;
-      name = "catppuccin-frappe-light-cursors";
+      package = pkgs.catppuccin-cursors.frappeBlue;
+      name = "catppuccin-frappe-blue-cursors";
     };
   };
 }

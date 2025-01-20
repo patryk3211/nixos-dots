@@ -102,7 +102,7 @@ in {
       # Startup programs
       exec-once = dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS DISPLAY WAYLAND_DISPLAY HYPRLAND_INSTANCE_SIGNATURE
       exec-once = eww open mainbar
-      exec-once = hyprctl setcursor $XCURSOR_THEME $XCURSOR_SIZE
+      # exec-once = hyprctl setcursor $XCURSOR_THEME $XCURSOR_SIZE
 
       debug {
         disable_logs = false

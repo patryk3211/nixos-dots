@@ -56,7 +56,7 @@
         # steam = prev.steam.override {
         #   extraProfile = "export STEAM_EXTRA_COMPAT_TOOLS_PATHS='${nix-gaming.packages.${prev.system}.proton-ge}'";
         # };
-        wine = nix-gaming.packages.${prev.system}.wine-ge;
+        # wine = nix-gaming.packages.${prev.system}.wine-ge;
       })
     ];
     basePackages = (import nixpkgs { inherit system; });
@@ -171,6 +171,7 @@
       "https://helix.cachix.org"
       "https://fufexan.cachix.org"
       "https://nix-gaming.cachix.org"
+      "https://cuda-maintainers.cachix.org"
       # "https://hyprland.cachix.org"
       # "https://cache.privatevoid.net"
     ];
@@ -181,6 +182,7 @@
       "helix.cachix.org-1:ejp9KQpR1FBI2onstMQ34yogDm4OgU2ru6lIwPvuCVs="
       "fufexan.cachix.org-1:LwCDjCJNJQf5XD2BV+yamQIMZfcKWR9ISIFy5curUsY="
       "nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4="
+      "cuda-maintainers.cachix.org-1:0dq3bujKpuEPMCX6U4WylrUDZ9JyUG0VpVZa7CNfq5E="
       # "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
       # "cache.privatevoid.net:SErQ8bvNWANeAvtsOESUwVYr2VJynfuc9JRwlzTTkVg="
     ];

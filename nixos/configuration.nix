@@ -37,7 +37,6 @@
     startWhenNeeded = true;
     drivers = [
       pkgs.brlaser
-      pkgs.hplipWithPlugin
     ];
   };
 
@@ -61,6 +60,27 @@
       enable = true;
       quantum = 64;
       rate = 48000;
+    };
+  };
+
+  programs.gamemode = {
+    enable = true;
+    settings = {
+      general.renice = 10;
+      
+      # gpu = {
+      #   apply_gpu_optimisations = "accept-responsibility";
+      #   gpu_device = 0;
+      # };
+
+      # custom = {
+      #   start = ''
+      #     nvidia-settings -a '[gpu:0]/GPUPowerMizerMode=1'
+      #   '';
+      #   end = ''
+      #     nvidia-settings -a '[gpu:0]/GPUPowerMizerMode=0'
+      #   '';
+      # };
     };
   };
 
@@ -108,17 +128,19 @@
 
   security.pam.services.swaylock = {};
 
-  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
-    "nvidia-settings"
-    "nvidia-x11"
-    "nvidia-persistenced"
-    "steam"
-    "steam-original"
-    "steam-run"
-    "libXNVCtrl"
-    "hplip"
-    "steam-unwrapped"
-  ];
+  # nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
+  #   "nvidia-settings"
+  #   "nvidia-x11"
+  #   "nvidia-persistenced"
+  #   "steam"
+  #   "steam-original"
+  #   "steam-run"
+  #   "libXNVCtrl"
+  #   "hplip"
+  #   "steam-unwrapped"
+  #   "cuda-merged"
+  # ];
+  nixpkgs.config.allowUnfree = true;
 
   hardware.enableRedistributableFirmware = true;
 

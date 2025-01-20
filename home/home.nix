@@ -21,7 +21,11 @@
   home.stateVersion = "23.05"; # Please read the comment before changing.
 
   home.packages = with pkgs; [
-    (nerdfonts.override { fonts = [ "FiraCode" "FiraMono" ]; })
+    # (nerdfonts.override { fonts = [ "FiraCode" "FiraMono" ]; })
+    # nerd-fonts.fira-code
+    # nerd-fonts.fira-mono
+    nerd-fonts.iosevka
+    iosevka
     noto-fonts
     fira-mono
     corefonts
@@ -41,7 +45,14 @@
     gnomeExtensions.gsconnect
   ];
 
-  fonts.fontconfig.enable = true;
+  fonts.fontconfig = {
+    enable = true;
+    defaultFonts = {
+      serif = [ "Noto Serif" ];
+      sansSerif = [ "Noto Sans" ];
+      monospace = [ "FiraMono" ];
+    };
+  };
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
@@ -76,16 +87,18 @@
     ./games.nix
   ];
 
-  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
-    "steam"
-    "steam-original"
-    "steam-run"
-    "discord"
-    "corefonts"
-    "cudatoolkit"
-    "nvidia-x11"
-    "nvidia-settings"
-    "cuda_nvcc"
-    "libXNVCtrl"
-  ];
+  # nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
+  #   "steam"
+  #   "steam-original"
+  #   "steam-run"
+  #   "discord"
+  #   "corefonts"
+  #   "cudatoolkit"
+  #   "nvidia-x11"
+  #   "nvidia-settings"
+  #   "cuda_nvcc"
+  #   "libXNVCtrl"
+  #   "cuda-merged"
+  # ];
+  nixpkgs.config.allowUnfree = true;
 }

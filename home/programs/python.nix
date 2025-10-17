@@ -36,7 +36,7 @@ in {
   home.packages = [
     (patchedpython.withPackages (ppkgs: with ppkgs; [
       # pip
-      tkinter
+  #    tkinter
       # cython
     ]))
   ];

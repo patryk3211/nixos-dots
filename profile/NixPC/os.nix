@@ -28,6 +28,7 @@
         xorg.libXi
         xorg.libXinerama
         xorg.libXScrnSaver
+        glibc
         libpng
         libvorbis
         stdenv.cc.cc.lib

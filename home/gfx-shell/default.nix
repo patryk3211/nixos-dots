@@ -18,7 +18,7 @@
     flavor = "frappe";
     accent = "blue";
 
-    pointerCursor = {
+    cursors = {
       enable = true;
       flavor = "frappe";
       accent = "blue";

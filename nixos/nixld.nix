@@ -30,6 +30,7 @@
     libxcrypt-legacy
     libdrm
     glib
+    glibc
     libxkbcommon
     dbus
     krb5
@@ -45,6 +46,7 @@
     libva
     pipewire
     alsa-lib
+    libglvnd
   ];
 in {
   programs.nix-ld = {

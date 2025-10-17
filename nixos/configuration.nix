@@ -149,12 +149,17 @@
     memoryMax = 4 * 1024 * 1024 * 1024;
   };
 
-  services.udev.packages = [ pkgs.platformio ];
+  # services.udev.packages = [ pkgs.platformio ];
   services.fstrim.enable = true;
   services.udisks2.enable = true;
 
   programs.kdeconnect = {
     enable = true;
+  };
+
+  programs.appimage = {
+    enable = true;
+    binfmt = true;
   };
 
   virtualisation.docker = {

@@ -124,7 +124,7 @@ in {
       # Rules
       ${concatStringsSep "\n" (map (v: let
         ruleType = if v.v2 then "windowrulev2" else "windowrule";
-      in "${ruleType} = ${v.rule}, ${v.target}"
+      in "${ruleType} = ${v.rule}, initialTitle:${v.target}"
       ) cfg.rules)}
     '';
   };

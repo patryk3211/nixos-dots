@@ -14,5 +14,6 @@
       ];
     })
     gpredict
+    jetbrains.idea-community
   ];
 }

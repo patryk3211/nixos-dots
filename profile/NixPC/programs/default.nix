@@ -8,7 +8,7 @@ in {
   home.packages = with pkgs; [
     blender
     # musescore
-    bcnc.bCNC
+    # bcnc.bCNC
     # (python311.withPackages(ps: [
     #   pkgs.python311Packages.cython
     #   (bcnc ps).bCNC

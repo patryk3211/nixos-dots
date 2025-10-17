@@ -18,7 +18,7 @@ in rec {
     checkInputs = [];
     nativeBuildInputs = [];
     propagatedBuildInputs = [
-      pkgs.gcc12
+      pkgs.gcc13
     ];
   };
   "bCNC" = pythonpkgs.buildPythonPackage rec {

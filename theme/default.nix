@@ -8,7 +8,7 @@
 
   config.theme = {
     icon = {
-      package = pkgs.papirus-icon-theme;
+    #  package = pkgs.papirus-icon-theme;
       name = "Papirus-Dark";
     };
 

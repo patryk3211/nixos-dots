@@ -2,7 +2,7 @@
 
 {
   home.packages = with pkgs; [
-    config.theme.icon.package
+#    config.theme.icon.package
     # config.theme.cursor.package
     config.home.pointerCursor.package
 

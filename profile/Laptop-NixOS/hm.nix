@@ -6,7 +6,7 @@
   ];
 
   home.packages = with pkgs; [
-    sdrpp
+    # sdrpp
     lunarvim
     (gnuradio.override {
       extraPackages = with gnuradioPackages; [
